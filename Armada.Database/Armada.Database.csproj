@@ -67,9 +67,9 @@
     <Compile Include="EntitiesConfiguration\EmpireConfig.cs" />
     <Compile Include="EntitiesConfiguration\MissionConfig.cs" />
     <Compile Include="EntitiesConfiguration\PlanetConfig.cs" />
-    <Compile Include="Migrations\202106260842454_Initial.cs" />
-    <Compile Include="Migrations\202106260842454_Initial.designer.cs">
-      <DependentUpon>202106260842454_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\202106261045093_InitialMigration.cs" />
+    <Compile Include="Migrations\202106261045093_InitialMigration.designer.cs">
+      <DependentUpon>202106261045093_InitialMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
@@ -86,8 +86,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202106260842454_Initial.resx">
-      <DependentUpon>202106260842454_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202106261045093_InitialMigration.resx">
+      <DependentUpon>202106261045093_InitialMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
