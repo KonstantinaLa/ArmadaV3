@@ -67,6 +67,10 @@
     <Compile Include="EntitiesConfiguration\EmpireConfig.cs" />
     <Compile Include="EntitiesConfiguration\MissionConfig.cs" />
     <Compile Include="EntitiesConfiguration\PlanetConfig.cs" />
+    <Compile Include="Migrations\202106260842454_Initial.cs" />
+    <Compile Include="Migrations\202106260842454_Initial.designer.cs">
+      <DependentUpon>202106260842454_Initial.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -80,6 +84,11 @@
       <Project>{433270df-08c7-42a5-99f6-2ac3ab8a788e}</Project>
       <Name>Armada.Entities</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202106260842454_Initial.resx">
+      <DependentUpon>202106260842454_Initial.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
