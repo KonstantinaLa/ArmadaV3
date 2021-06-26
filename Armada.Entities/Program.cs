@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Armada.Entities
+namespace ArmadaV3.Entities
 {
     class Program
     {

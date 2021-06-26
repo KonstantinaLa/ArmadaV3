@@ -80,12 +80,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Armada.Entities\Armada.Entities.csproj">
-      <Project>{433270df-08c7-42a5-99f6-2ac3ab8a788e}</Project>
-      <Name>Armada.Entities</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Migrations\202106261045093_InitialMigration.resx">
       <DependentUpon>202106261045093_InitialMigration.cs</DependentUpon>
     </EmbeddedResource>

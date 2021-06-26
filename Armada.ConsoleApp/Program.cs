@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Armada.ConsoleApp
+namespace ArmadaV3.ConsoleApp
 {
     class Program
     {

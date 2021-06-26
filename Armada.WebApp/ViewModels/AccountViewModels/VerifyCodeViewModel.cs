@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Armada.Models.AccountViewModels
+namespace ArmadaV3.Models.AccountViewModels
 {
     public class VerifyCodeViewModel
     {

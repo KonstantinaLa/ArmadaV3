@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Optimization;
 
-namespace Armada.WebApp
+namespace ArmadaV3.WebApp
 {
     public class BundleConfig
     {

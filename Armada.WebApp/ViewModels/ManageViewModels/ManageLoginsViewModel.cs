@@ -2,7 +2,7 @@
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 
-namespace Armada.Models.ManageViewModels
+namespace ArmadaV3.Models.ManageViewModels
 {
     public class ManageLoginsViewModel
     {

@@ -8,10 +8,10 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using Armada.Models.AccountViewModels;
-using Armada.Entities;
+using ArmadaV3.Models.AccountViewModels;
+using ArmadaV3.Entities;
 
-namespace Armada.WebApp.Controllers
+namespace ArmadaV3.WebApp.Controllers
 {
     [Authorize]
     public class AccountController : Controller

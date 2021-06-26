@@ -10,10 +10,10 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
-using Armada.Entities;
-using Armada.Database;
+using ArmadaV3.Entities;
+using ArmadaV3.Database;
 
-namespace Armada.WebApp
+namespace ArmadaV3.WebApp
 {
     public class EmailService : IIdentityMessageService
     {

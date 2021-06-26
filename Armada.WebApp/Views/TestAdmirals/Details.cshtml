@@ -1,0 +1,90 @@
+﻿@model ArmadaV3.Entities.Admiral
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Admiral</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Crew.Specialty)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Crew.Specialty)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Empire.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Empire.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Age)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Age)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EnlistmentDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EnlistmentDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Photo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Photo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Specialty)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Specialty)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Species)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Species)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.AdmiralId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

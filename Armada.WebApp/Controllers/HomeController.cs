@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Armada.WebApp.Controllers
+namespace ArmadaV3.WebApp.Controllers
 {
     public class HomeController : Controller
     {

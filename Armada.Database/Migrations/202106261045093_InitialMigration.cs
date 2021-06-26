@@ -1,4 +1,4 @@
-﻿namespace Armada.Database.Migrations
+﻿namespace ArmadaV3.Database.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;

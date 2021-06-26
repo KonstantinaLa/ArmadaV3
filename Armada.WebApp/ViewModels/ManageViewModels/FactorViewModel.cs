@@ -1,4 +1,4 @@
-﻿namespace Armada.Models.ManageViewModels
+﻿namespace ArmadaV3.Models.ManageViewModels
 {
     public class FactorViewModel
     {

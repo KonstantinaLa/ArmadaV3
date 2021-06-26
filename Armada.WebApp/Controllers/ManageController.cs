@@ -6,9 +6,9 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using Armada.Models.ManageViewModels;
+using ArmadaV3.Models.ManageViewModels;
 
-namespace Armada.WebApp.Controllers
+namespace ArmadaV3.WebApp.Controllers
 {
     [Authorize]
     public class ManageController : Controller

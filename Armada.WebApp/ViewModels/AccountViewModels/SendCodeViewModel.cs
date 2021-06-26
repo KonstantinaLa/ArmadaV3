@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Armada.Models.AccountViewModels
+namespace ArmadaV3.Models.AccountViewModels
 {
     public class SendCodeViewModel
     {

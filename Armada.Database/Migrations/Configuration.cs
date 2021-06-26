@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using Armada.Entities;
+using ArmadaV3.Entities;
 
-namespace Armada.Database.Migrations
+namespace ArmadaV3.Database.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;

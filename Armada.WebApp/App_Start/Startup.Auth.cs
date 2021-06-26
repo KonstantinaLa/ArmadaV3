@@ -5,10 +5,10 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
-using Armada.Database;
-using Armada.Entities;
+using ArmadaV3.Database;
+using ArmadaV3.Entities;
 
-namespace Armada.WebApp
+namespace ArmadaV3.WebApp
 {
     public partial class Startup
     {
