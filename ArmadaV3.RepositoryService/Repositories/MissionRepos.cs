@@ -4,18 +4,16 @@ using ArmadaV3.Repositories.RepositoryService;
 
 namespace ArmadaV3.RepositoryService.Repositories
 {
-    public class CrewRepos:Repository<Crew>
+    public class MissionRepos : Repository<Mission>
     {
         public ApplicationDbContext DbContext
         {
-            get { return Context as ApplicationDbContext; }
+            get { return Context as ApplicationDbContext;}
         }
 
-
-        public CrewRepos(ApplicationDbContext context):base(context)
+        public MissionRepos(ApplicationDbContext context):base(context)
         {
-
+            
         }
-
     }
 }

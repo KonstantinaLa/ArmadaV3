@@ -1,5 +1,5 @@
-﻿using ArmadaV3.Repositories.RepositoryService;
-using System;
+﻿using System;
+using ArmadaV3.RepositoryService.Repositories;
 
 namespace ArmadaV3.RepositoryService
 {
@@ -7,6 +7,10 @@ namespace ArmadaV3.RepositoryService
     {
         AdmiralRepos Admirals { get; }
         CrewRepos Crew { get; }
+        EmperorRepos Emperors { get; }
+        EmpireRepos Empires { get; }
+        MissionRepos Missions { get; }
+        PlanetRepos Planets { get; }
 
         void Save();
     }

@@ -1,12 +1,8 @@
 ﻿using ArmadaV3.Database;
 using ArmadaV3.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using ArmadaV3.Repositories.RepositoryService;
 
-namespace ArmadaV3.Repositories.RepositoryService
+namespace ArmadaV3.RepositoryService.Repositories
 {
     public class AdmiralRepos:Repository<Admiral>
     {
