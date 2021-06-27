@@ -22,7 +22,7 @@ namespace ArmadaV3.Entities
 
         public virtual ICollection<AdmiralMission> AdmiralMissions { get; set; }
         public virtual Empire Empire { get; set; }
-        public int EmpireId { get; set; }
+        public int? EmpireId { get; set; }
         public virtual Crew Crew { get; set; }
 
         public Admiral()

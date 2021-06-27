@@ -9,7 +9,7 @@ namespace ArmadaV3.Database.EntitiesConfiguration
         {
             //One to One Admiral/Crew
             HasRequired(c => c.Admiral)
-                .WithRequiredPrincipal(a => a.Crew);
+                .WithRequiredDependent(a => a.Crew);
 
             Property(c => c.Number)
                 .IsRequired();

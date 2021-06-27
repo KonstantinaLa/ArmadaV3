@@ -105,7 +105,7 @@
                 Specialty = AdmiralSpecialty.Propulsion,
                 Species = EmperorSpecies.Human,
                 Description = "Description",
-                Crew = new Crew { Number = 15, Specialty = "Developers" },
+                
                 Empire = e1,
                 EmpireId = e1.EmpireId
             };
@@ -117,7 +117,7 @@
                 Specialty = AdmiralSpecialty.MilitaryTheory,
                 Species = EmperorSpecies.Human,
                 Description = "Description",
-                Crew = new Crew { Number = 27, Specialty = "Radiation Techs" },
+                
                 Empire = e1,
                 EmpireId = e1.EmpireId
             };
@@ -129,7 +129,7 @@
                 Specialty = AdmiralSpecialty.Psionics,
                 Species = EmperorSpecies.Human,
                 Description = "Description",
-                Crew = new Crew { Number = 22, Specialty = "Scientists" },
+                
                 Empire = e1,
                 EmpireId = e1.EmpireId
             };
@@ -141,7 +141,7 @@
                 Specialty = AdmiralSpecialty.Propulsion,
                 Species = EmperorSpecies.Human,
                 Description = "Description",
-                Crew = new Crew { Number = 105, Specialty = "Soldiers" },
+                
                 Empire = e1,
                 EmpireId = e1.EmpireId
             };
@@ -153,7 +153,7 @@
                 Specialty = AdmiralSpecialty.Scout,
                 Species = EmperorSpecies.Human,
                 Description = "Description",
-                Crew = new Crew { Number = 24, Specialty = "Nuclear Scientists" },
+                
                 Empire = e1,
                 EmpireId = e1.EmpireId
             };
@@ -165,7 +165,7 @@
                 Specialty = AdmiralSpecialty.VoidHunter,
                 Species = EmperorSpecies.Human,
                 Description = "Description",
-                Crew = new Crew { Number = 45, Specialty = "Rocket Scientists" },
+                
                 Empire = e2,
                 EmpireId = e2.EmpireId
             };
@@ -177,7 +177,7 @@
                 Specialty = AdmiralSpecialty.Computing,
                 Species = EmperorSpecies.Human,
                 Description = "Description",
-                Crew = new Crew { Number = 22, Specialty = "Toxicologists" },
+                
                 Empire = e2,
                 EmpireId = e2.EmpireId
             };
@@ -189,7 +189,7 @@
                 Specialty = AdmiralSpecialty.ArmyLogistics,
                 Species = EmperorSpecies.Human,
                 Description = "Description",
-                Crew = new Crew { Number = 58, Specialty = "Geneticists" },
+                
                 Empire = e2,
                 EmpireId = e2.EmpireId
             };
@@ -201,7 +201,7 @@
                 Specialty = AdmiralSpecialty.Propulsion,
                 Species = EmperorSpecies.Human,
                 Description = "Description",
-                Crew = new Crew { Number = 64, Specialty = "Biochemical Geneticists" },
+                
                 Empire = e2,
                 EmpireId = e2.EmpireId
             };
@@ -213,7 +213,7 @@
                 Specialty = AdmiralSpecialty.Psionics,
                 Species = EmperorSpecies.Human,
                 Description = "Description",
-                Crew = new Crew { Number = 24, Specialty = "Veterans" },
+                
                 Empire = e2,
                 EmpireId = e2.EmpireId
             };
@@ -225,7 +225,7 @@
                 Specialty = AdmiralSpecialty.Propulsion,
                 Species = EmperorSpecies.Mantis,
                 Description = "Description",
-                Crew = new Crew { Number = 67, Specialty = "Xenos" },
+                
                 Empire = e3,
                 EmpireId = e3.EmpireId
             };
@@ -237,7 +237,7 @@
                 Specialty = AdmiralSpecialty.Scout,
                 Species = EmperorSpecies.Engi,
                 Description = "Description",
-                Crew = new Crew { Number = 133, Specialty = "Clone Troopers" },
+                
                 Empire = e3,
                 EmpireId = e3.EmpireId
             };
@@ -249,7 +249,7 @@
                 Specialty = AdmiralSpecialty.Propulsion,
                 Species = EmperorSpecies.Blorg,
                 Description = "Description",
-                Crew = new Crew { Number = 218, Specialty = "Crusaders" },
+                
                 Empire = e3,
                 EmpireId = e3.EmpireId
             };
@@ -261,7 +261,7 @@
                 Specialty = AdmiralSpecialty.ArmyLogistics,
                 Species = EmperorSpecies.Vheln,
                 Description = "Description",
-                Crew = new Crew { Number = 319, Specialty = "Surveillance Crew" },
+                
                 Empire = e3,
                 EmpireId = e3.EmpireId
             };
@@ -274,7 +274,7 @@
                 Species = EmperorSpecies.Zoltan,
 
                 Description = "Description",
-                Crew = new Crew { Number = 45, Specialty = "Monitor Techs" },
+                
                 Empire = e4,
                 EmpireId = e4.EmpireId
             };
@@ -286,7 +286,7 @@
                 Specialty = AdmiralSpecialty.Propulsion,
                 Species = EmperorSpecies.Scyldari,
                 Description = "Description",
-                Crew = new Crew { Number = 182, Specialty = "Exterminators" },
+                
                 Empire = e4,
                 EmpireId = e4.EmpireId
             };
@@ -298,7 +298,7 @@
                 Specialty = AdmiralSpecialty.ArmyLogistics,
                 Species = EmperorSpecies.Scyldari,
                 Description = "Description",
-                Crew = new Crew { Number = 88, Specialty = "Necromancers" },
+                
                 Empire = e4,
                 EmpireId = e4.EmpireId
             };
@@ -310,7 +310,7 @@
                 Specialty = AdmiralSpecialty.MilitaryTheory,
                 Species = EmperorSpecies.Scyldari,
                 Description = "Description",
-                Crew = new Crew { Number = 75, Specialty = "Priests" },
+                
                 Empire = e4,
                 EmpireId = e4.EmpireId
             };
@@ -322,7 +322,7 @@
                 Specialty = AdmiralSpecialty.Psionics,
                 Species = EmperorSpecies.Engi,
                 Description = "Description",
-                Crew = new Crew { Number = 167, Specialty = "Slaves" },
+                
                 Empire = e5,
                 EmpireId = e5.EmpireId
             };
@@ -334,7 +334,7 @@
                 Specialty = AdmiralSpecialty.Scout,
                 Species = EmperorSpecies.Gecko,
                 Description = "Description",
-                Crew = new Crew { Number = 1260, Specialty = "Colonists" },
+                
                 Empire = e5,
                 EmpireId = e5.EmpireId
             };
@@ -346,7 +346,7 @@
                 Specialty = AdmiralSpecialty.Computing,
                 Species = EmperorSpecies.Orbis,
                 Description = "Description",
-                Crew = new Crew { Number = 450, Specialty = "Droids" },
+                
                 Empire = e5,
                 EmpireId = e5.EmpireId
             };
@@ -358,7 +358,7 @@
                 Specialty = AdmiralSpecialty.VoidHunter,
                 Species = EmperorSpecies.Blorg,
                 Description = "Description",
-                Crew = new Crew { Number = 1345, Specialty = "Synthetics" },
+                
                 Empire = e5,
                 EmpireId = e5.EmpireId
             };
@@ -370,7 +370,7 @@
                 Specialty = AdmiralSpecialty.Computing,
                 Species = EmperorSpecies.Blorg,
                 Description = "Description",
-                Crew = new Crew { Number = 415, Specialty = "Executives" },
+                
                 Empire = e5,
                 EmpireId = e5.EmpireId
             };
@@ -382,7 +382,7 @@
                 Specialty = AdmiralSpecialty.Computing,
                 Species = EmperorSpecies.Engi,
                 Description = "Description",
-                Crew = new Crew { Number = 15, Specialty = "Nobles" },
+                
                 Empire = e6,
                 EmpireId = e6.EmpireId
             };
@@ -394,7 +394,7 @@
                 Specialty = AdmiralSpecialty.ArmyLogistics,
                 Species = EmperorSpecies.Lok,
                 Description = "Description",
-                Crew = new Crew { Number = 43, Specialty = "High Priests" },
+                
                 Empire = e6,
                 EmpireId = e6.EmpireId
             };
@@ -406,7 +406,7 @@
                 Specialty = AdmiralSpecialty.Psionics,
                 Species = EmperorSpecies.Pasharti,
                 Description = "Description",
-                Crew = new Crew { Number = 217, Specialty = "Merchants" },
+                
                 Empire = e6,
                 EmpireId = e6.EmpireId
             };
@@ -418,7 +418,7 @@
                 Specialty = AdmiralSpecialty.VoidHunter,
                 Species = EmperorSpecies.Scyldari,
                 Description = "Description",
-                Crew = new Crew { Number = 68, Specialty = "Roboticists" },
+                
                 Empire = e6,
                 EmpireId = e6.EmpireId
             };
@@ -430,7 +430,7 @@
                 Specialty = AdmiralSpecialty.Computing,
                 Species = EmperorSpecies.Blorg,
                 Description = "Description",
-                Crew = new Crew { Number = 6, Specialty = "Science Directors" },
+                
                 Empire = e7,
                 EmpireId = e7.EmpireId
             };
@@ -442,7 +442,7 @@
                 Specialty = AdmiralSpecialty.ArmyLogistics,
                 Species = EmperorSpecies.Gecko,
                 Description = "Description",
-                Crew = new Crew { Number = 17, Specialty = "Coordinators" },
+                
                 Empire = e7,
                 EmpireId = e7.EmpireId
             };
@@ -454,7 +454,7 @@
                 Specialty = AdmiralSpecialty.Propulsion,
                 Species = EmperorSpecies.Pasharti,
                 Description = "Description",
-                Crew = new Crew { Number = 22, Specialty = "Administrators" },
+                
                 Empire = e7,
                 EmpireId = e7.EmpireId
             };
@@ -466,7 +466,7 @@
                 Specialty = AdmiralSpecialty.ArmyLogistics,
                 Species = EmperorSpecies.Mantis,
                 Description = "Description",
-                Crew = new Crew { Number = 57, Specialty = "Entertainers" },
+                
                 Empire = e8,
                 EmpireId = e8.EmpireId
             };
@@ -478,7 +478,7 @@
                 Specialty = AdmiralSpecialty.MilitaryTheory,
                 Species = EmperorSpecies.Engi,
                 Description = "Description",
-                Crew = new Crew { Number = 16, Specialty = "Overseers" },
+                
                 Empire = e8,
                 EmpireId = e8.EmpireId
             };
@@ -490,7 +490,7 @@
                 Specialty = AdmiralSpecialty.MilitaryTheory,
                 Species = EmperorSpecies.Vheln,
                 Description = "Description",
-                Crew = new Crew { Number = 82, Specialty = "Drones" },
+                
                 Empire = e8,
                 EmpireId = e8.EmpireId
             };
@@ -502,7 +502,7 @@
                 Specialty = AdmiralSpecialty.MilitaryTheory,
                 Species = EmperorSpecies.Lok,
                 Description = "Description",
-                Crew = new Crew { Number = 19, Specialty = "Managers" },
+                
                 Empire = e8,
                 EmpireId = e8.EmpireId
             };
@@ -514,7 +514,7 @@
                 Specialty = AdmiralSpecialty.Computing,
                 Species = EmperorSpecies.Zoltan,
                 Description = "Description",
-                Crew = new Crew { Number = 376, Specialty = "Bureaucrats" },
+                
                 Empire = e8,
                 EmpireId = e8.EmpireId
             };
@@ -526,7 +526,7 @@
                 Specialty = AdmiralSpecialty.MilitaryTheory,
                 Species = EmperorSpecies.Zoltan,
                 Description = "Description",
-                Crew = new Crew { Number = 680, Specialty = "Warriors" },
+                
                 Empire = e8,
                 EmpireId = e8.EmpireId
             };
@@ -538,7 +538,7 @@
                 Specialty = (AdmiralSpecialty)5,
                 Species = EmperorSpecies.Zoltan,
                 Description = "Description",
-                Crew = new Crew { Number = 28, Specialty = "Facilitators" },
+                
                 Empire = e8,
                 EmpireId = e8.EmpireId
             };
@@ -558,7 +558,54 @@
 
             #endregion
 
+            #region Seed Crew
 
+            var c1 = new Crew { Number = 14, Specialty = "Engineers", Admiral =a1 } ;
+            var c2 = new Crew { Number = 15, Specialty = "Developers", Admiral = a2 };
+            var c3 = new Crew { Number = 27, Specialty = "Radiation Techs", Admiral = a3 };
+            var c4 = new Crew { Number = 22, Specialty = "Scientists", Admiral = a4 };
+            var c5 = new Crew { Number = 105, Specialty = "Soldiers", Admiral = a5 };
+            var c6 = new Crew { Number = 24, Specialty = "Nuclear Scientists", Admiral = a6 };
+            var c7 = new Crew { Number = 45, Specialty = "Rocket Scientists", Admiral = a7 };
+            var c8 = new Crew { Number = 22, Specialty = "Toxicologists", Admiral = a8 };
+            var c9 = new Crew { Number = 58, Specialty = "Geneticists", Admiral = a9 };
+            var c10 = new Crew { Number = 64, Specialty = "Biochemical Geneticists", Admiral = a10 };
+            var c11 = new Crew { Number = 24, Specialty = "Veterans", Admiral = a11 };
+            var c12 = new Crew { Number = 67, Specialty = "Xenos", Admiral = a12 };
+            var c13 = new Crew { Number = 133, Specialty = "Clone Troopers", Admiral = a13 };
+            var c14 = new Crew { Number = 218, Specialty = "Crusaders", Admiral = a14 };
+            var c15 = new Crew { Number = 319, Specialty = "Surveillance Crew", Admiral = a15 };
+            var c16 = new Crew { Number = 45, Specialty = "Monitor Techs", Admiral = a16 };
+            var c17 = new Crew { Number = 182, Specialty = "Exterminators", Admiral = a17 };
+            var c18 = new Crew { Number = 88, Specialty = "Necromancers", Admiral = a18 };
+            var c19 = new Crew { Number = 75, Specialty = "Priests", Admiral = a19 };
+            var c20 = new Crew { Number = 167, Specialty = "Slaves", Admiral = a20 };
+            var c21 = new Crew { Number = 1260, Specialty = "Colonists", Admiral = a21 };
+            var c22 = new Crew { Number = 450, Specialty = "Droids", Admiral = a22 };
+            var c23 = new Crew { Number = 1345, Specialty = "Synthetics", Admiral = a23 };
+            var c24 = new Crew { Number = 415, Specialty = "Executives", Admiral = a24 };
+            var c25 = new Crew { Number = 15, Specialty = "Nobles", Admiral = a25 };
+            var c26 = new Crew { Number = 43, Specialty = "High Priests", Admiral = a26 };
+            var c27 = new Crew { Number = 217, Specialty = "Merchants", Admiral = a27 };
+            var c28 = new Crew { Number = 68, Specialty = "Roboticists", Admiral = a28 };
+            var c29 = new Crew { Number = 6, Specialty = "Science Directors", Admiral = a29 };
+            var c30 = new Crew { Number = 17, Specialty = "Coordinators", Admiral = a30 };
+            var c31 = new Crew { Number = 22, Specialty = "Administrators", Admiral = a31 };
+            var c32 = new Crew { Number = 57, Specialty = "Entertainers", Admiral = a32 };
+            var c33 = new Crew { Number = 16, Specialty = "Overseers", Admiral = a33 };
+            var c34 = new Crew { Number = 82, Specialty = "Drones", Admiral = a34 };
+            var c35 = new Crew { Number = 19, Specialty = "Managers", Admiral = a35 };
+            var c36 = new Crew { Number = 376, Specialty = "Bureaucrats", Admiral = a36 };
+            var c37 = new Crew { Number = 680, Specialty = "Warriors", Admiral = a37 };
+            var c38 = new Crew { Number = 28, Specialty = "Facilitators", Admiral = a38 };
+
+            var crews = new List<Crew> { c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30, c31, c32, c33, c34, c35, c36, c37, c38 };
+
+            foreach (var crew in crews)
+            {
+                context.Crews.AddOrUpdate(c => new { c.Number, c.Specialty }, crew);
+            }
+            #endregion
 
             #region Seed Emperors
 

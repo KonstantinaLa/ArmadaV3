@@ -13,7 +13,7 @@
                     {
                         AdmiralId = c.Int(nullable: false),
                         MissionId = c.Int(nullable: false),
-                        UniqueNumberForSeed = c.Int(nullable: false),
+                        UniqueNumberForSeed = c.Int(),
                         IsSuccess = c.Boolean(),
                     })
                 .PrimaryKey(t => new { t.AdmiralId, t.MissionId })
@@ -26,7 +26,7 @@
                 "dbo.Admirals",
                 c => new
                     {
-                        AdmiralId = c.Int(nullable: false),
+                        AdmiralId = c.Int(nullable: false, identity: true),
                         Name = c.String(nullable: false, maxLength: 50),
                         Age = c.Int(nullable: false),
                         EnlistmentDate = c.DateTime(nullable: false, storeType: "date"),
@@ -34,23 +34,23 @@
                         Description = c.String(nullable: false, maxLength: 1000),
                         Specialty = c.Int(nullable: false),
                         Species = c.Int(nullable: false),
-                        EmpireId = c.Int(nullable: false),
+                        EmpireId = c.Int(),
                     })
                 .PrimaryKey(t => t.AdmiralId)
-                .ForeignKey("dbo.Crews", t => t.AdmiralId)
-                .ForeignKey("dbo.Empires", t => t.EmpireId, cascadeDelete: true)
-                .Index(t => t.AdmiralId)
+                .ForeignKey("dbo.Empires", t => t.EmpireId)
                 .Index(t => t.EmpireId);
             
             CreateTable(
                 "dbo.Crews",
                 c => new
                     {
-                        CrewId = c.Int(nullable: false, identity: true),
+                        CrewId = c.Int(nullable: false),
                         Number = c.Int(nullable: false),
                         Specialty = c.String(nullable: false, maxLength: 50),
                     })
-                .PrimaryKey(t => t.CrewId);
+                .PrimaryKey(t => t.CrewId)
+                .ForeignKey("dbo.Admirals", t => t.CrewId)
+                .Index(t => t.CrewId);
             
             CreateTable(
                 "dbo.Empires",
@@ -197,7 +197,7 @@
             DropForeignKey("dbo.AdmiralMissions", "AdmiralId", "dbo.Admirals");
             DropForeignKey("dbo.Admirals", "EmpireId", "dbo.Empires");
             DropForeignKey("dbo.Emperors", "EmperorId", "dbo.Empires");
-            DropForeignKey("dbo.Admirals", "AdmiralId", "dbo.Crews");
+            DropForeignKey("dbo.Crews", "CrewId", "dbo.Admirals");
             DropIndex("dbo.PlanetsMissions", new[] { "PlanetId" });
             DropIndex("dbo.PlanetsMissions", new[] { "MissionId" });
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
@@ -207,8 +207,8 @@
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
             DropIndex("dbo.Emperors", new[] { "EmperorId" });
+            DropIndex("dbo.Crews", new[] { "CrewId" });
             DropIndex("dbo.Admirals", new[] { "EmpireId" });
-            DropIndex("dbo.Admirals", new[] { "AdmiralId" });
             DropIndex("dbo.AdmiralMissions", new[] { "MissionId" });
             DropIndex("dbo.AdmiralMissions", new[] { "AdmiralId" });
             DropTable("dbo.PlanetsMissions");

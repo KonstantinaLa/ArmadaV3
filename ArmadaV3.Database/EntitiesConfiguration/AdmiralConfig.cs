@@ -8,14 +8,13 @@ namespace ArmadaV3.Database.EntitiesConfiguration
         internal AdmiralConfig()
         {
             //One to Many Admiral/Empire
-            HasRequired(a => a.Empire)
+            HasOptional(a => a.Empire)
                 .WithMany(e => e.Admirals)
-                .HasForeignKey<int>(a => a.EmpireId);
+                .HasForeignKey<int?>(a => a.EmpireId);
 
             //One to One Admiral/Crew
             HasRequired(a => a.Crew)
-                .WithRequiredDependent(c => c.Admiral);
-
+                .WithRequiredPrincipal(c => c.Admiral);
 
             Property(a => a.Name)
                 .IsRequired()
