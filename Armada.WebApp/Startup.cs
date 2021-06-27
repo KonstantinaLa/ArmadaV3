@@ -1,8 +1,9 @@
-﻿using Microsoft.Owin;
+﻿using Armada.WebApp;
+using Microsoft.Owin;
 using Owin;
 
-[assembly: OwinStartupAttribute(typeof(ArmadaV3.WebApp.Startup))]
-namespace ArmadaV3.WebApp
+[assembly: OwinStartup(typeof(Startup))]
+namespace Armada.WebApp
 {
     public partial class Startup
     {

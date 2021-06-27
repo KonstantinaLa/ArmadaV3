@@ -8,6 +8,21 @@
         public override void Up()
         {
             CreateTable(
+                "dbo.AdmiralMissions",
+                c => new
+                    {
+                        AdmiralId = c.Int(nullable: false),
+                        MissionId = c.Int(nullable: false),
+                        UniqueNumberForSeed = c.Int(nullable: false),
+                        IsSuccess = c.Boolean(),
+                    })
+                .PrimaryKey(t => new { t.AdmiralId, t.MissionId })
+                .ForeignKey("dbo.Admirals", t => t.AdmiralId, cascadeDelete: true)
+                .ForeignKey("dbo.Missions", t => t.MissionId, cascadeDelete: true)
+                .Index(t => t.AdmiralId)
+                .Index(t => t.MissionId);
+            
+            CreateTable(
                 "dbo.Admirals",
                 c => new
                     {
@@ -26,42 +41,6 @@
                 .ForeignKey("dbo.Empires", t => t.EmpireId, cascadeDelete: true)
                 .Index(t => t.AdmiralId)
                 .Index(t => t.EmpireId);
-            
-            CreateTable(
-                "dbo.AdmiralMissions",
-                c => new
-                    {
-                        AdmiralId = c.Int(nullable: false),
-                        MissionId = c.Int(nullable: false),
-                        IsSuccess = c.Boolean(),
-                    })
-                .PrimaryKey(t => new { t.AdmiralId, t.MissionId })
-                .ForeignKey("dbo.Admirals", t => t.AdmiralId, cascadeDelete: true)
-                .ForeignKey("dbo.Missions", t => t.MissionId, cascadeDelete: true)
-                .Index(t => t.AdmiralId)
-                .Index(t => t.MissionId);
-            
-            CreateTable(
-                "dbo.Missions",
-                c => new
-                    {
-                        MissionId = c.Int(nullable: false, identity: true),
-                        Type = c.String(nullable: false, maxLength: 50),
-                        StartDate = c.DateTime(nullable: false, storeType: "date"),
-                        EndDate = c.DateTime(nullable: false, storeType: "date"),
-                    })
-                .PrimaryKey(t => t.MissionId);
-            
-            CreateTable(
-                "dbo.Planets",
-                c => new
-                    {
-                        PlanetId = c.Int(nullable: false, identity: true),
-                        Name = c.String(nullable: false, maxLength: 50),
-                        StarSystem = c.String(nullable: false, maxLength: 50),
-                        Type = c.Int(nullable: false),
-                    })
-                .PrimaryKey(t => t.PlanetId);
             
             CreateTable(
                 "dbo.Crews",
@@ -100,6 +79,28 @@
                 .PrimaryKey(t => t.EmperorId)
                 .ForeignKey("dbo.Empires", t => t.EmperorId)
                 .Index(t => t.EmperorId);
+            
+            CreateTable(
+                "dbo.Missions",
+                c => new
+                    {
+                        MissionId = c.Int(nullable: false, identity: true),
+                        Type = c.String(nullable: false, maxLength: 50),
+                        StartDate = c.DateTime(nullable: false, storeType: "date"),
+                        EndDate = c.DateTime(nullable: false, storeType: "date"),
+                    })
+                .PrimaryKey(t => t.MissionId);
+            
+            CreateTable(
+                "dbo.Planets",
+                c => new
+                    {
+                        PlanetId = c.Int(nullable: false, identity: true),
+                        Name = c.String(nullable: false, maxLength: 50),
+                        StarSystem = c.String(nullable: false, maxLength: 50),
+                        Type = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.PlanetId);
             
             CreateTable(
                 "dbo.AspNetRoles",
@@ -190,13 +191,13 @@
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
-            DropForeignKey("dbo.Admirals", "EmpireId", "dbo.Empires");
-            DropForeignKey("dbo.Emperors", "EmperorId", "dbo.Empires");
-            DropForeignKey("dbo.Admirals", "AdmiralId", "dbo.Crews");
             DropForeignKey("dbo.AdmiralMissions", "MissionId", "dbo.Missions");
             DropForeignKey("dbo.PlanetsMissions", "PlanetId", "dbo.Planets");
             DropForeignKey("dbo.PlanetsMissions", "MissionId", "dbo.Missions");
             DropForeignKey("dbo.AdmiralMissions", "AdmiralId", "dbo.Admirals");
+            DropForeignKey("dbo.Admirals", "EmpireId", "dbo.Empires");
+            DropForeignKey("dbo.Emperors", "EmperorId", "dbo.Empires");
+            DropForeignKey("dbo.Admirals", "AdmiralId", "dbo.Crews");
             DropIndex("dbo.PlanetsMissions", new[] { "PlanetId" });
             DropIndex("dbo.PlanetsMissions", new[] { "MissionId" });
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
@@ -206,23 +207,23 @@
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
             DropIndex("dbo.Emperors", new[] { "EmperorId" });
-            DropIndex("dbo.AdmiralMissions", new[] { "MissionId" });
-            DropIndex("dbo.AdmiralMissions", new[] { "AdmiralId" });
             DropIndex("dbo.Admirals", new[] { "EmpireId" });
             DropIndex("dbo.Admirals", new[] { "AdmiralId" });
+            DropIndex("dbo.AdmiralMissions", new[] { "MissionId" });
+            DropIndex("dbo.AdmiralMissions", new[] { "AdmiralId" });
             DropTable("dbo.PlanetsMissions");
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetRoles");
+            DropTable("dbo.Planets");
+            DropTable("dbo.Missions");
             DropTable("dbo.Emperors");
             DropTable("dbo.Empires");
             DropTable("dbo.Crews");
-            DropTable("dbo.Planets");
-            DropTable("dbo.Missions");
-            DropTable("dbo.AdmiralMissions");
             DropTable("dbo.Admirals");
+            DropTable("dbo.AdmiralMissions");
         }
     }
 }

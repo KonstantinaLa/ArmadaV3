@@ -1,7 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using ArmadaV3.Entities.CustomValidations;
+using FluentValidation.Attributes;
 
 namespace ArmadaV3.Entities
 {
+    [Validator(typeof(EmperorValidator))]
     public class Emperor
     {
         public int EmperorId { get; set; }

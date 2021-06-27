@@ -1,14 +1,13 @@
 ﻿using System;
+using ArmadaV3.Database;
+using ArmadaV3.Entities;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
-using Microsoft.Owin.Security.Google;
 using Owin;
-using ArmadaV3.Database;
-using ArmadaV3.Entities;
 
-namespace ArmadaV3.WebApp
+namespace Armada.WebApp
 {
     public partial class Startup
     {

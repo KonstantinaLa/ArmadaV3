@@ -1,6 +1,5 @@
 ﻿using FluentValidation;
 
-
 namespace ArmadaV3.Entities.CustomValidations
 {
     public class MissionValidator: AbstractValidator<Mission>
@@ -22,7 +21,6 @@ namespace ArmadaV3.Entities.CustomValidations
             RuleFor(a => a.EndDate)
                 .NotEmpty()
                 .WithMessage("Required");
-
         }
     }
 }

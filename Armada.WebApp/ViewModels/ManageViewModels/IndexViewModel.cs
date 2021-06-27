@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Microsoft.AspNet.Identity;
 
-namespace ArmadaV3.Models.ManageViewModels
+namespace Armada.WebApp.ViewModels.ManageViewModels
 {
     public class IndexViewModel
     {

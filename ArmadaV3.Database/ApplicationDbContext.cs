@@ -14,6 +14,7 @@ namespace ArmadaV3.Database
         public DbSet<Crew> Crews { get; set; }
         public DbSet<Mission> Missions { get; set; }
         public DbSet<Planet> Planets { get; set; }
+        public DbSet<AdmiralMission> AdmiralMissions { get; set; }
 
         public ApplicationDbContext() : base("Armada")
         {

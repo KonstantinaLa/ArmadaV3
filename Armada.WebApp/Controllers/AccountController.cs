@@ -1,17 +1,14 @@
-﻿using System;
-using System.Globalization;
-using System.Linq;
-using System.Security.Claims;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using Armada.WebApp.ViewModels.AccountViewModels;
+using ArmadaV3.Entities;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using ArmadaV3.Models.AccountViewModels;
-using ArmadaV3.Entities;
 
-namespace ArmadaV3.WebApp.Controllers
+namespace Armada.WebApp.Controllers
 {
     [Authorize]
     public class AccountController : Controller

@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using ArmadaV3.Entities.CustomValidations;
+using FluentValidation.Attributes;
 
 namespace ArmadaV3.Entities
 {
+    [Validator(typeof(AdmiralValidator))]
     public class Admiral
     {
         public int AdmiralId { get; set; }

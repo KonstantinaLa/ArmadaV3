@@ -16,10 +16,6 @@ namespace ArmadaV3.Entities.CustomValidations
                 .WithMessage("Required")
                 .Length(2, 50)
                 .WithMessage("Length 2-50 characters");
-
-
-
-
         }
     }
 }
