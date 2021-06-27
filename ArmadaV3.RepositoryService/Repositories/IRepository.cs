@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace ArmadaV3.Repositories.RepositoryService
+namespace ArmadaV3.RepositoryService.Repositories
 {
     public interface IRepository<TEntity> where TEntity : class
     {

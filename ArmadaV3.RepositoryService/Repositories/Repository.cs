@@ -1,13 +1,8 @@
-﻿using ArmadaV3.RepositoryService;
-using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace ArmadaV3.Repositories.RepositoryService
+namespace ArmadaV3.RepositoryService.Repositories
 {
     public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {
@@ -43,8 +38,5 @@ namespace ArmadaV3.Repositories.RepositoryService
         {
             Context.Entry(entity).State = EntityState.Deleted;
         }
-
-
-
     }
 }

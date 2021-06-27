@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace ArmadaV3.Models.AccountViewModels
+namespace Armada.WebApp.ViewModels.AccountViewModels
 {
     public class LoginViewModel
     {

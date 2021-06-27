@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace ArmadaV3.Models.ManageViewModels
+namespace Armada.WebApp.ViewModels.ManageViewModels
 {
     public class AddPhoneNumberViewModel
     {
