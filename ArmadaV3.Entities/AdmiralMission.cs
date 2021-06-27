@@ -1,4 +1,7 @@
-﻿namespace ArmadaV3.Entities
+﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace ArmadaV3.Entities
 {
     public class AdmiralMission
     {
