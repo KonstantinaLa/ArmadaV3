@@ -4,33 +4,29 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2 class="p-4">Admirals</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "Create", null, new {@class="pl-4"})
 </p>
-<table class="table">
+
+<table class="table table-hover">
+    <thead>
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Crew.Specialty)
+            @Html.DisplayNameFor(model => model.Photo)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Empire.Name)
+            Empire Name
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            Admiral Name
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Age)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.EnlistmentDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Photo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
+            Enlistment Date
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Specialty)
@@ -38,44 +34,45 @@
         <th>
             @Html.DisplayNameFor(model => model.Species)
         </th>
-        <th></th>
+        <th>
+            Actions
+        </th>
     </tr>
+    </thead>
+    <tbody>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Crew.Specialty)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Empire.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Age)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EnlistmentDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Photo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Specialty)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Species)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.AdmiralId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.AdmiralId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.AdmiralId })
-        </td>
-    </tr>
-}
 
+        @foreach (var item in Model)
+        {
+            <tr class="table-active">
+                <td>
+                    @Html.DisplayFor(modelItem => item.Photo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Empire.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Age)
+                </td>
+                <td>
+                    @item.EnlistmentDate.ToString("d")
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Specialty)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Species)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new {id = item.AdmiralId}) |
+                    @Html.ActionLink("Details", "Details", new {id = item.AdmiralId}) |
+                    @Html.ActionLink("Delete", "Delete", new {id = item.AdmiralId})
+                </td>
+            </tr>
+
+        }
+    </tbody>
 </table>
