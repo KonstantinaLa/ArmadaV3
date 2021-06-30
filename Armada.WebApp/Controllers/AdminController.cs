@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace Armada.WebApp.Controllers
 {
+
     public class AdminController : Controller
     {
         // GET: Admin

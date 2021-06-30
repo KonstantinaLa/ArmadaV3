@@ -14,60 +14,60 @@ using ArmadaV3.RepositoryService;
 
 namespace Armada.WebApp.Controllers.WebApi
 {
-
-    public class CrewController : ApiController
+    public class EmperorController : ApiController
     {
         private ApplicationDbContext db = new ApplicationDbContext();
         private readonly IUnitOfWork unitOfWork;
 
-        public CrewController()
+        public EmperorController()
         {
             unitOfWork = new UnitOfWork();
         }
-
-        // GET: api/Crew
-        public IHttpActionResult GetCrews()
+        // GET: api/Emperor
+        public IHttpActionResult GetEmperors()
         {
-            //May need more Data for Admiral, Konstantina
-            var crew = unitOfWork.Crew.Get().Select(c=>new
+            var emperor = unitOfWork.Emperors.Get().Select(e => new
             {
-                CrewId = c.CrewId,
-                Number = c.Number,
-                Specialty = c.Specialty,
-                Admiral = c.Admiral.Name
+                EmperorId = e.EmperorId,
+                Name = e.Name,
+                Age = e.Age,
+                Photo = e.Photo,
+                Description = e.Description,
+                Empire = e.Empire.Name
+
             });
 
-            return Ok(crew);
+            return Ok(emperor);
         }
 
-        // GET: api/Crew/5
-        [ResponseType(typeof(Crew))]
-        public IHttpActionResult GetCrew(int id)
+        // GET: api/Emperor/5
+        [ResponseType(typeof(Emperor))]
+        public IHttpActionResult GetEmperor(int id)
         {
-            Crew crew = db.Crews.Find(id);
-            if (crew == null)
+            Emperor emperor = db.Emperors.Find(id);
+            if (emperor == null)
             {
                 return NotFound();
             }
 
-            return Ok(crew);
+            return Ok(emperor);
         }
 
-        // PUT: api/Crew/5
+        // PUT: api/Emperor/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutCrew(int id, Crew crew)
+        public IHttpActionResult PutEmperor(int id, Emperor emperor)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != crew.CrewId)
+            if (id != emperor.EmperorId)
             {
                 return BadRequest();
             }
 
-            db.Entry(crew).State = EntityState.Modified;
+            db.Entry(emperor).State = EntityState.Modified;
 
             try
             {
@@ -75,7 +75,7 @@ namespace Armada.WebApp.Controllers.WebApi
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!CrewExists(id))
+                if (!EmperorExists(id))
                 {
                     return NotFound();
                 }
@@ -88,16 +88,16 @@ namespace Armada.WebApp.Controllers.WebApi
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Crew
-        [ResponseType(typeof(Crew))]
-        public IHttpActionResult PostCrew(Crew crew)
+        // POST: api/Emperor
+        [ResponseType(typeof(Emperor))]
+        public IHttpActionResult PostEmperor(Emperor emperor)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Crews.Add(crew);
+            db.Emperors.Add(emperor);
 
             try
             {
@@ -105,7 +105,7 @@ namespace Armada.WebApp.Controllers.WebApi
             }
             catch (DbUpdateException)
             {
-                if (CrewExists(crew.CrewId))
+                if (EmperorExists(emperor.EmperorId))
                 {
                     return Conflict();
                 }
@@ -115,23 +115,23 @@ namespace Armada.WebApp.Controllers.WebApi
                 }
             }
 
-            return CreatedAtRoute("DefaultApi", new { id = crew.CrewId }, crew);
+            return CreatedAtRoute("DefaultApi", new { id = emperor.EmperorId }, emperor);
         }
 
-        // DELETE: api/Crew/5
-        [ResponseType(typeof(Crew))]
-        public IHttpActionResult DeleteCrew(int id)
+        // DELETE: api/Emperor/5
+        [ResponseType(typeof(Emperor))]
+        public IHttpActionResult DeleteEmperor(int id)
         {
-            Crew crew = db.Crews.Find(id);
-            if (crew == null)
+            Emperor emperor = db.Emperors.Find(id);
+            if (emperor == null)
             {
                 return NotFound();
             }
 
-            db.Crews.Remove(crew);
+            db.Emperors.Remove(emperor);
             db.SaveChanges();
 
-            return Ok(crew);
+            return Ok(emperor);
         }
 
         protected override void Dispose(bool disposing)
@@ -143,9 +143,9 @@ namespace Armada.WebApp.Controllers.WebApi
             base.Dispose(disposing);
         }
 
-        private bool CrewExists(int id)
+        private bool EmperorExists(int id)
         {
-            return db.Crews.Count(e => e.CrewId == id) > 0;
+            return db.Emperors.Count(e => e.EmperorId == id) > 0;
         }
     }
 }
