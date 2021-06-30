@@ -14,66 +14,65 @@ using ArmadaV3.RepositoryService;
 
 namespace Armada.WebApp.Controllers.WebApi
 {
-    public class MissionController : ApiController
+    public class EmpireController : ApiController
     {
         private ApplicationDbContext db = new ApplicationDbContext();
         private readonly IUnitOfWork unitOfWork;
 
-        public MissionController()
+        public EmpireController()
         {
             unitOfWork = new UnitOfWork();
         }
 
-        // GET: api/Mission
-        public  IHttpActionResult GetMissions()
+        // GET: api/Empire
+        public IHttpActionResult GetEmpires()
         {
-            var missions = unitOfWork.Missions.Get().Select( m => new
-            { 
-                MissionId = m.MissionId,
-                Type = m.Type,
-                StartDate = m.StartDate,
-                EndDate = m.EndDate,
-                Planets = new 
-                {
-                    Name = m.Planets.Select( p => p.Name)
-                },
+            var empires = unitOfWork.Empires.Get().Select(e => new
+            {
+                EmpireId = e.EmpireId,
+                Name = e.Name,
+                Trait = e.Trait,
+                ControlledSystem = e.ControlledSystems,
+                Photo = e.Photo,
+                Description = e.Description,
+                Emperor = e.Emperor.Name,
                 Admirals = new
                 {
-                    Name = m.AdmiralMissions.Select( a=> a.Admiral.Name)
+                    Names = e.Admirals.Select(y => y.Name)
                 }
             });
 
-            return Ok(missions);
+            return Ok(empires);
         }
 
-        // GET: api/Mission/5
-        [ResponseType(typeof(Mission))]
-        public IHttpActionResult GetMission(int id)
+        // GET: api/Empire/5
+        [ResponseType(typeof(Empire))]
+        public IHttpActionResult GetEmpire(int id)
         {
-            Mission mission = db.Missions.Find(id);
-            if (mission == null)
+            Empire empire = db.Empires.Find(id);
+            if (empire == null)
             {
                 return NotFound();
             }
 
-            return Ok(mission);
+            return Ok(empire);
         }
 
-        // PUT: api/Mission/5
+        // PUT: api/Empire/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutMission(int id, Mission mission)
+        public IHttpActionResult PutEmpire(int id, Empire empire)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != mission.MissionId)
+            if (id != empire.EmpireId)
             {
                 return BadRequest();
             }
 
-            db.Entry(mission).State = EntityState.Modified;
+            db.Entry(empire).State = EntityState.Modified;
 
             try
             {
@@ -81,7 +80,7 @@ namespace Armada.WebApp.Controllers.WebApi
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!MissionExists(id))
+                if (!EmpireExists(id))
                 {
                     return NotFound();
                 }
@@ -94,35 +93,35 @@ namespace Armada.WebApp.Controllers.WebApi
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Mission
-        [ResponseType(typeof(Mission))]
-        public IHttpActionResult PostMission(Mission mission)
+        // POST: api/Empire
+        [ResponseType(typeof(Empire))]
+        public IHttpActionResult PostEmpire(Empire empire)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Missions.Add(mission);
+            db.Empires.Add(empire);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = mission.MissionId }, mission);
+            return CreatedAtRoute("DefaultApi", new { id = empire.EmpireId }, empire);
         }
 
-        // DELETE: api/Mission/5
-        [ResponseType(typeof(Mission))]
-        public IHttpActionResult DeleteMission(int id)
+        // DELETE: api/Empire/5
+        [ResponseType(typeof(Empire))]
+        public IHttpActionResult DeleteEmpire(int id)
         {
-            Mission mission = db.Missions.Find(id);
-            if (mission == null)
+            Empire empire = db.Empires.Find(id);
+            if (empire == null)
             {
                 return NotFound();
             }
 
-            db.Missions.Remove(mission);
+            db.Empires.Remove(empire);
             db.SaveChanges();
 
-            return Ok(mission);
+            return Ok(empire);
         }
 
         protected override void Dispose(bool disposing)
@@ -134,9 +133,9 @@ namespace Armada.WebApp.Controllers.WebApi
             base.Dispose(disposing);
         }
 
-        private bool MissionExists(int id)
+        private bool EmpireExists(int id)
         {
-            return db.Missions.Count(e => e.MissionId == id) > 0;
+            return db.Empires.Count(e => e.EmpireId == id) > 0;
         }
     }
 }

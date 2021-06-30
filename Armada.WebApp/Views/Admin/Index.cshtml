@@ -9,10 +9,22 @@
             <a class="nav-link active" data-bs-toggle="tab" href="#home">Home</a>
         </li>
         <li class="nav-item">
-            <button id="crewbtn" class="nav-link btn" @*data-bs-toggle="tab"*@>Crew</button>
+            <button id="crewbtn" class="nav-link btn">Crew</button>
         </li>
         <li class="nav-item">
-            <a class="nav-link disabled" href="#">Disabled</a>
+            <button id="missionbtn" class="nav-link btn">Missions</button>
+        </li>
+        <li class="nav-item">
+            <button id="admiralbtn" class="nav-link btn">Admirals</button>
+        </li>
+        <li class="nav-item">
+            <button id="planetbtn" class="nav-link btn">Planets</button>
+        </li>
+        <li class="nav-item">
+            <button id="empirebtn" class="nav-link btn">Empire</button>
+        </li>
+        <li class="nav-item">
+            <button id="emperorbtn" class="nav-link btn">Emperor</button>
         </li>
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
@@ -46,16 +58,16 @@
 @section scripts
 {
     <script>
-
+        //Crew
         function CreateCrewTable() {
             $("#myTabContent").html(`
-                                
                                 <table class="table table-hover table-bordered">
                                     <thead>
                                         <tr>
                                             <th>Number</th>
                                             <th>Specialty</th>
                                             <th>Admiral</th>
+                                            <th>Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody id="crewBody">
@@ -86,11 +98,301 @@
                                                      </td>
 
                                                      <td>
-                                                         <button id="delete" onclick="deleteMovie(${crew.CrewId})" class="btn btn-danger btn-sm">Delete</button>
+                                                         <button id="delete" onclick="deleteCrew(${crew.CrewId})" class="btn btn-danger btn-sm">Delete</button>
                                                      </td>
                                                  </tr>
                                                 `);
                     });
+                }
+            });
+
+        });
+
+        //Mission
+        function CreateMissionTable() {
+            $("#myTabContent").html(`
+                                <table class="table table-hover table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Type</th>
+                                            <th>Start Date</th>
+                                            <th>End Date</th>
+                                            <th>Planets</th>
+                                            <th>Admirals</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="missionsBody">
+                                </tbody>
+                             </table>
+                            `);
+        }
+
+        $("#missionbtn").click(function () {
+            $.ajax({
+                type: "GET",
+                url: "/api/Mission",
+                data: "",
+                dataType: "json",
+                success: function (response) {
+                    CreateMissionTable();
+                    response.forEach(function (mission) {
+                        $("#missionsBody").append(`
+                                                     <tr>
+                                                     <td>
+                                                         ${mission.Type}
+                                                     </td>
+                                                     <td>
+                                                         ${mission.StartDate}
+                                                     </td>
+                                                     <td>
+                                                         ${mission.EndDate}
+                                                     </td>
+                                                     <td>
+                                                         ${mission.Planets}
+                                                     </td>
+                                                     <td>
+                                                         ${mission.Admirals}
+                                                     </td>
+                                                     <td>
+                                                         <button id="delete" onclick="deleteMission(${mission.missionId})" class="btn btn-danger btn-sm">Delete</button>
+                                                     </td>
+                                                 </tr>
+                                                `);
+                    });
+
+                }
+            });
+
+        });
+
+        //Admiral
+        function CreateAdmiralTable() {
+            $("#myTabContent").html(`
+                                <table class="table table-hover table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Photo</th>
+                                            <th>Name</th>
+                                            <th>Age</th>
+                                            <th>Enlistment Date</th>
+                                            <th>Empire</th>
+                                            <th>Crew</th>
+                                            <th>Missions</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="admiralsBody">
+                                </tbody>
+                             </table>
+                            `);
+        }
+
+        $("#admiralbtn").click(function () {
+            $.ajax({
+                type: "GET",
+                url: "/api/Admiral",
+                data: "",
+                dataType: "json",
+                success: function (response) {
+                    CreateAdmiralTable();
+                    response.forEach(function (admiral) {
+                        $("#admiralsBody").append(`
+                                                     <tr>
+                                                     <td>
+                                                         ${admiral.Photo}
+                                                     </td>
+                                                     <td>
+                                                         ${admiral.Name}
+                                                     </td>
+                                                     <td>
+                                                         ${admiral.Age}
+                                                     </td>
+                                                     <td>
+                                                         ${admiral.EnlistmentDate}
+                                                     </td>
+                                                     <td>
+                                                         ${admiral.Empire}
+                                                     </td>
+                                                     <td>
+                                                         ${admiral.Crew}
+                                                     </td>
+                                                     <td>
+                                                         ${admiral.Missions}
+                                                     </td>
+                                                     <td>
+                                                         <button id="delete" onclick="deleteMission(${admiral.AdmiralId})" class="btn btn-danger btn-sm">Delete</button>
+                                                     </td>
+                                                 </tr>
+                                                `);
+                    });
+
+                }
+            });
+
+        });
+        
+        //Planet
+        function CreatePlanetTable() {
+            $("#myTabContent").html(`
+                                <table class="table table-hover table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Star System</th>
+                                            <th>Missions</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="planetsBody">
+                                </tbody>
+                             </table>
+                            `);
+        }
+
+        $("#planetbtn").click(function () {
+            $.ajax({
+                type: "GET",
+                url: "/api/Planet",
+                data: "",
+                dataType: "json",
+                success: function (response) {
+                    CreatePlanetTable();
+                    response.forEach(function (planet) {
+                        $("#planetsBody").append(`
+                                                     <tr>
+                                                     <td>
+                                                         ${planet.Name}
+                                                     </td>
+                                                     <td>
+                                                         ${planet.StarSystem}
+                                                     </td>
+                                                     <td>
+                                                         ${planet.Missions}
+                                                     </td>
+                                                     <td>
+                                                         <button id="delete" onclick="deleteMission(${planet.PlanetId})" class="btn btn-danger btn-sm">Delete</button>
+                                                     </td>
+                                                 </tr>
+                                                `);
+                    });
+
+                }
+            });
+
+        });
+        
+        //Empire
+        function CreateEmpireTable() {
+            $("#myTabContent").html(`
+                                <table class="table table-hover table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Photo</th>
+                                            <th>Name</th>
+                                            <th>Trait</th>
+                                            <th>Controlled System</th>
+                                            <th>Emperor</th>
+                                            <th>Admirals</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="empiresBody">
+                                </tbody>
+                             </table>
+                            `);
+        }
+
+        $("#empirebtn").click(function () {
+            $.ajax({
+                type: "GET",
+                url: "/api/Empire",
+                data: "",
+                dataType: "json",
+                success: function (response) {
+                    CreateEmpireTable();
+                    response.forEach(function (empire) {
+                        $("#empiresBody").append(`
+                                                     <tr>
+                                                     <td>
+                                                         ${empire.Photo}
+                                                     </td>
+                                                     <td>
+                                                         ${empire.Name}
+                                                     </td>
+                                                     <td>
+                                                         ${empire.Trait}
+                                                     </td>
+                                                     <td>
+                                                         ${empire.ControlledSystem}
+                                                     </td>
+                                                     <td>
+                                                         ${empire.Emperor}
+                                                     </td>
+                                                     <td>
+                                                         ${empire.Admirals}
+                                                     </td>
+                                                     <td>
+                                                         <button id="delete" onclick="deleteMission(${empire.EmpireId})" class="btn btn-danger btn-sm">Delete</button>
+                                                     </td>
+                                                 </tr>
+                                                `);
+                    });
+
+                }
+            });
+
+        });
+
+        //Emperor
+        function CreateEmperorTable() {
+            $("#myTabContent").html(`
+                                <table class="table table-hover table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Photo</th>
+                                            <th>Name</th>
+                                            <th>Age</th>
+                                            <th>Empire</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="emperorsBody">
+                                </tbody>
+                             </table>
+                            `);
+        }
+
+        $("#emperorbtn").click(function () {
+            $.ajax({
+                type: "GET",
+                url: "/api/Emperor",
+                data: "",
+                dataType: "json",
+                success: function (response) {
+                    CreateEmperorTable();
+                    response.forEach(function (emperor) {
+                        $("#emperorsBody").append(`
+                                                     <tr>
+                                                     <td>
+                                                         ${emperor.Photo}
+                                                     </td>
+                                                     <td>
+                                                         ${emperor.Name}
+                                                     </td>
+                                                     <td>
+                                                         ${emperor.Age}
+                                                     </td>
+                                                     <td>
+                                                         ${emperor.Empire}
+                                                     </td>
+                                                     <td>
+                                                         <button id="delete" onclick="deleteMission(${emperor.EmperorId})" class="btn btn-danger btn-sm">Delete</button>
+                                                     </td>
+                                                 </tr>
+                                                `);
+                    });
+
                 }
             });
 

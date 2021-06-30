@@ -14,66 +14,63 @@ using ArmadaV3.RepositoryService;
 
 namespace Armada.WebApp.Controllers.WebApi
 {
-    public class MissionController : ApiController
+    public class PlanetController : ApiController
     {
         private ApplicationDbContext db = new ApplicationDbContext();
         private readonly IUnitOfWork unitOfWork;
 
-        public MissionController()
+        public PlanetController()
         {
             unitOfWork = new UnitOfWork();
         }
-
-        // GET: api/Mission
-        public  IHttpActionResult GetMissions()
+        // GET: api/Planet
+        public IHttpActionResult GetPlanets()
         {
-            var missions = unitOfWork.Missions.Get().Select( m => new
-            { 
-                MissionId = m.MissionId,
-                Type = m.Type,
-                StartDate = m.StartDate,
-                EndDate = m.EndDate,
-                Planets = new 
+            var planets = unitOfWork.Planets.Get().Select(p => new
+            {
+                PlanetId = p.PlanetId,
+                Name = p.Name,
+                StarSystem = p.StarSystem,
+                Missions = new      //pithanon lathos 
                 {
-                    Name = m.Planets.Select( p => p.Name)
-                },
-                Admirals = new
-                {
-                    Name = m.AdmiralMissions.Select( a=> a.Admiral.Name)
+                    Type = p.Missions.Select(y => y.Type)
                 }
+
+
             });
 
-            return Ok(missions);
+
+            return Ok(planets);
         }
 
-        // GET: api/Mission/5
-        [ResponseType(typeof(Mission))]
-        public IHttpActionResult GetMission(int id)
+        // GET: api/Planet/5
+        [ResponseType(typeof(Planet))]
+        public IHttpActionResult GetPlanet(int id)
         {
-            Mission mission = db.Missions.Find(id);
-            if (mission == null)
+            Planet planet = db.Planets.Find(id);
+            if (planet == null)
             {
                 return NotFound();
             }
 
-            return Ok(mission);
+            return Ok(planet);
         }
 
-        // PUT: api/Mission/5
+        // PUT: api/Planet/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutMission(int id, Mission mission)
+        public IHttpActionResult PutPlanet(int id, Planet planet)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != mission.MissionId)
+            if (id != planet.PlanetId)
             {
                 return BadRequest();
             }
 
-            db.Entry(mission).State = EntityState.Modified;
+            db.Entry(planet).State = EntityState.Modified;
 
             try
             {
@@ -81,7 +78,7 @@ namespace Armada.WebApp.Controllers.WebApi
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!MissionExists(id))
+                if (!PlanetExists(id))
                 {
                     return NotFound();
                 }
@@ -94,35 +91,35 @@ namespace Armada.WebApp.Controllers.WebApi
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Mission
-        [ResponseType(typeof(Mission))]
-        public IHttpActionResult PostMission(Mission mission)
+        // POST: api/Planet
+        [ResponseType(typeof(Planet))]
+        public IHttpActionResult PostPlanet(Planet planet)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Missions.Add(mission);
+            db.Planets.Add(planet);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = mission.MissionId }, mission);
+            return CreatedAtRoute("DefaultApi", new { id = planet.PlanetId }, planet);
         }
 
-        // DELETE: api/Mission/5
-        [ResponseType(typeof(Mission))]
-        public IHttpActionResult DeleteMission(int id)
+        // DELETE: api/Planet/5
+        [ResponseType(typeof(Planet))]
+        public IHttpActionResult DeletePlanet(int id)
         {
-            Mission mission = db.Missions.Find(id);
-            if (mission == null)
+            Planet planet = db.Planets.Find(id);
+            if (planet == null)
             {
                 return NotFound();
             }
 
-            db.Missions.Remove(mission);
+            db.Planets.Remove(planet);
             db.SaveChanges();
 
-            return Ok(mission);
+            return Ok(planet);
         }
 
         protected override void Dispose(bool disposing)
@@ -134,9 +131,9 @@ namespace Armada.WebApp.Controllers.WebApi
             base.Dispose(disposing);
         }
 
-        private bool MissionExists(int id)
+        private bool PlanetExists(int id)
         {
-            return db.Missions.Count(e => e.MissionId == id) > 0;
+            return db.Planets.Count(e => e.PlanetId == id) > 0;
         }
     }
 }
