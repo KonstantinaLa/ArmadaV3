@@ -202,6 +202,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\TestAdmiralsController.cs" />
     <Compile Include="Controllers\WebApi\CrewController.cs" />
+    <Compile Include="Controllers\WebApi\MissionController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

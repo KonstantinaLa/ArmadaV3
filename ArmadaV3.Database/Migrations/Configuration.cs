@@ -1,10 +1,13 @@
 ﻿namespace ArmadaV3.Database.Migrations
 {
     using ArmadaV3.Entities;
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
     using System;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Data.Entity.Migrations;
+    using System.Linq;
 
     internal sealed class Configuration : DbMigrationsConfiguration<ArmadaV3.Database.ApplicationDbContext>
     {
@@ -15,6 +18,56 @@
 
         protected override void Seed(ArmadaV3.Database.ApplicationDbContext context)
         {
+            if (!context.Roles.Any(x=>x.Name == "Admin"))
+            {
+                var store = new RoleStore<IdentityRole>(context);
+                var manager = new RoleManager<IdentityRole>(store);
+                var role = new IdentityRole { Name = "Admin" };
+
+                manager.Create(role);
+            }
+
+            if (!context.Roles.Any(x=>x.Name == "Emperor"))
+            {
+                var store = new RoleStore<IdentityRole>(context);
+                var manager = new RoleManager<IdentityRole>(store);
+                var role = new IdentityRole { Name = "Emperor" };
+
+                manager.Create(role);
+            }
+
+            var PaswordHash = new PasswordHasher();
+            if (!context.Users.Any(x => x.UserName == "admin@admin.net"))
+            {
+                var store = new UserStore<ApplicationUser>(context);
+                var manager = new UserManager<ApplicationUser>(store);
+                var user = new ApplicationUser
+                {
+                    UserName = "admin@admin.net",
+                    Email = "admin@admin.net",
+                    PasswordHash = PaswordHash.HashPassword("Admin1!")
+                };
+
+                manager.Create(user);
+                manager.AddToRole(user.Id, "Admin");
+            }
+           
+            if (!context.Users.Any(x => x.UserName == "emperor@emperor.net"))
+            {
+                var store = new UserStore<ApplicationUser>(context);
+                var manager = new UserManager<ApplicationUser>(store);
+                var user = new ApplicationUser
+                {
+                    UserName = "emperor@emperor.net",
+                    Email = "emperor@emperor.net",
+                    PasswordHash = PaswordHash.HashPassword("Admin1!")
+                };
+
+                manager.Create(user);
+                manager.AddToRole(user.Id, "Emperor");
+            }
+
+
             #region Seed Empires
 
             var e1 = new Empire
