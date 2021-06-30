@@ -11067,3 +11067,8 @@ fieldset:disabled .btn {
 .padding {
     padding-bottom: 2rem;
 }
+
+.video-fluid {
+    width: 100%;
+    height: auto;
+}
