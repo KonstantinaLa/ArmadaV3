@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Repositories\AdmiralRepos.cs" />
+    <Compile Include="Repositories\AdmiralsMissionsRepos.cs" />
     <Compile Include="Repositories\CrewRepos.cs" />
     <Compile Include="Repositories\EmperorRepos.cs" />
     <Compile Include="Repositories\EmpireRepos.cs" />

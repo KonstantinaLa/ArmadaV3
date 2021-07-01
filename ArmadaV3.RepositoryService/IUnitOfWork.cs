@@ -11,6 +11,7 @@ namespace ArmadaV3.RepositoryService
         EmpireRepos Empires { get; }
         MissionRepos Missions { get; }
         PlanetRepos Planets { get; }
+        AdmiralsMissionsRepos AdmiralsMissions { get; }
 
         void Save();
     }

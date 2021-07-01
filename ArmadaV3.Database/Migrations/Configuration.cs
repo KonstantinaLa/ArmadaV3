@@ -18,6 +18,7 @@
 
         protected override void Seed(ArmadaV3.Database.ApplicationDbContext context)
         {
+            #region Seed Users
             if (!context.Roles.Any(x=>x.Name == "Admin"))
             {
                 var store = new RoleStore<IdentityRole>(context);
@@ -37,14 +38,14 @@
             }
 
             var PaswordHash = new PasswordHasher();
-            if (!context.Users.Any(x => x.UserName == "admin@admin.net"))
+            if (!context.Users.Any(x => x.UserName == "admin@armada.net"))
             {
                 var store = new UserStore<ApplicationUser>(context);
                 var manager = new UserManager<ApplicationUser>(store);
                 var user = new ApplicationUser
                 {
-                    UserName = "admin@admin.net",
-                    Email = "admin@admin.net",
+                    UserName = "admin@armada.net",
+                    Email = "admin@armada.net",
                     PasswordHash = PaswordHash.HashPassword("Admin1!")
                 };
 
@@ -52,21 +53,21 @@
                 manager.AddToRole(user.Id, "Admin");
             }
            
-            if (!context.Users.Any(x => x.UserName == "emperor@emperor.net"))
+            if (!context.Users.Any(x => x.UserName == "emperor@armada.net"))
             {
                 var store = new UserStore<ApplicationUser>(context);
                 var manager = new UserManager<ApplicationUser>(store);
                 var user = new ApplicationUser
                 {
-                    UserName = "emperor@emperor.net",
-                    Email = "emperor@emperor.net",
+                    UserName = "emperor@armada.net",
+                    Email = "emperor@armada.net",
                     PasswordHash = PaswordHash.HashPassword("Admin1!")
                 };
 
                 manager.Create(user);
                 manager.AddToRole(user.Id, "Emperor");
             }
-
+            #endregion
 
             #region Seed Empires
 

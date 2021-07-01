@@ -12,6 +12,7 @@ namespace ArmadaV3.RepositoryService
         public EmpireRepos Empires { get; }
         public MissionRepos Missions { get; }
         public PlanetRepos Planets { get; }
+        public AdmiralsMissionsRepos AdmiralsMissions { get; }
         public UnitOfWork()
         {
             context = new ApplicationDbContext();
@@ -27,6 +28,8 @@ namespace ArmadaV3.RepositoryService
             Missions = new MissionRepos(context);
 
             Planets = new PlanetRepos(context);
+
+            AdmiralsMissions = new AdmiralsMissionsRepos(context);
         }
 
         public void Save()

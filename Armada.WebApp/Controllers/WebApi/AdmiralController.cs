@@ -27,6 +27,8 @@ namespace Armada.WebApp.Controllers.WebApi
         // GET: api/Admiral
         public IHttpActionResult GetAdmirals()
         {
+            
+
             var admirals = unitOfWork.Admirals.Get().Select(a => new
             {
                 AdmiralId = a.AdmiralId,
@@ -37,12 +39,18 @@ namespace Armada.WebApp.Controllers.WebApi
                 Description = a.Description,
                 Emprire = a.Empire.Name,
                 Crew = a.Crew.Number,
-                Missions = new 
-                { 
-                    Type = a.AdmiralMissions.Select( y => y.Mission.Type)
-                }
+                Missions = a.AdmiralMissions.Select(m => new
+                {
+                    Mission = m.Mission.
+                })
             });
 
+
+            //new
+            //{
+
+            //    MisionId = m.MissionId
+            //}
             return Ok(admirals);
         }
 

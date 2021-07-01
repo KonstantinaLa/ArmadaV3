@@ -55,6 +55,7 @@
         </div>
     </div>
 
+
 @section scripts
 {
     <script>
@@ -268,7 +269,9 @@
                                                          ${planet.StarSystem}
                                                      </td>
                                                      <td>
-                                                         ${planet.Missions}
+                                                        <ul class = "list-unstyled">
+                                                         ${ShowPlanetMissions(planet)}
+                                                        </ul>
                                                      </td>
                                                      <td>
                                                          <button id="delete" onclick="deleteMission(${planet.PlanetId})" class="btn btn-danger btn-sm">Delete</button>
@@ -281,6 +284,18 @@
             });
 
         });
+
+        function ShowPlanetMissions(planet) {
+            let template = "";
+            for (var mission of planet.Missions) {
+                template += `<li>
+                            ${mission.Type}
+                            </li>`
+            }
+
+            return template;
+        }
+
         
         //Empire
         function CreateEmpireTable() {

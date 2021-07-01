@@ -35,12 +35,15 @@ namespace Armada.WebApp.Controllers.WebApi
                 ControlledSystem = e.ControlledSystems,
                 Photo = e.Photo,
                 Description = e.Description,
-                Emperor = e.Emperor.Name,
-                Admirals = new
+                Emperor = e.Emperor?.Name,
+                Admirals = e.Admirals.Select(a => new
                 {
-                    Names = e.Admirals.Select(y => y.Name)
-                }
-            });
+                    AdmiralId = a.AdmiralId,
+                    Name = a.Name,
+                    Species = a.Species
+                })
+
+            }) ; 
 
             return Ok(empires);
         }

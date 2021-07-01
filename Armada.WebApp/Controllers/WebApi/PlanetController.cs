@@ -31,13 +31,15 @@ namespace Armada.WebApp.Controllers.WebApi
                 PlanetId = p.PlanetId,
                 Name = p.Name,
                 StarSystem = p.StarSystem,
-                Missions = new      //pithanon lathos 
+                Missions = p.Missions.Select(m => new
                 {
-                    Type = p.Missions.Select(y => y.Type)
-                }
+                    MissionId = m.MissionId,
+                    Type = m.Type
+
+                })
 
 
-            });
+            }); 
 
 
             return Ok(planets);
