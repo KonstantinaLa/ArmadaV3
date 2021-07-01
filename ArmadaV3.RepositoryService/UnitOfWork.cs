@@ -16,27 +16,18 @@ namespace ArmadaV3.RepositoryService
         public UnitOfWork()
         {
             context = new ApplicationDbContext();
-
             Admirals = new AdmiralRepos(context);
-
             Crew = new CrewRepos(context);
-
             Emperors = new EmperorRepos(context);
-
             Empires = new EmpireRepos(context);
-
             Missions = new MissionRepos(context);
-
             Planets = new PlanetRepos(context);
-
             AdmiralsMissions = new AdmiralsMissionsRepos(context);
         }
-
         public void Save()
         {
             context.SaveChanges();
         }
-
         public void Dispose()
         {
             context.Dispose();

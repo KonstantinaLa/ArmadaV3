@@ -4,7 +4,8 @@
 
 <h2>Index</h2>
 
-    <ul class="nav nav-tabs">
+<div class="nav">
+    <ul class="nav nav-tabs m-auto p-3">
         <li class="nav-item">
             <a class="nav-link active" data-bs-toggle="tab" href="#home">Home</a>
         </li>
@@ -26,17 +27,8 @@
         <li class="nav-item">
             <button id="emperorbtn" class="nav-link btn">Emperor</button>
         </li>
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-            <div class="dropdown-menu">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Separated link</a>
-            </div>
-        </li>
     </ul>
+</div>
 
     <div class="container">
         <div id="myTabContent" class="tab-content">
@@ -83,9 +75,9 @@
                 url: "/api/Crew",
                 data: "",
                 dataType: "json",
-                success: function (response) {
+                success: function(response) {
                     CreateCrewTable();
-                    response.forEach(function (crew) {
+                    response.forEach(function(crew) {
                         $("#crewBody").append(`
                                                      <tr>
                                                      <td>
@@ -99,7 +91,8 @@
                                                      </td>
 
                                                      <td>
-                                                         <button id="delete" onclick="deleteCrew(${crew.CrewId})" class="btn btn-danger btn-sm">Delete</button>
+                                                         <button id="delete" onclick="deleteCrew(${crew.CrewId
+                            })" class="btn btn-danger btn-sm">Delete</button>
                                                      </td>
                                                  </tr>
                                                 `);
@@ -129,15 +122,15 @@
                             `);
         }
 
-        $("#missionbtn").click(function () {
+        $("#missionbtn").click(function() {
             $.ajax({
                 type: "GET",
                 url: "/api/Mission",
                 data: "",
                 dataType: "json",
-                success: function (response) {
+                success: function(response) {
                     CreateMissionTable();
-                    response.forEach(function (mission) {
+                    response.forEach(function(mission) {
                         $("#missionsBody").append(`
                                                      <tr>
                                                      <td>
@@ -156,7 +149,8 @@
                                                          ${mission.Admirals}
                                                      </td>
                                                      <td>
-                                                         <button id="delete" onclick="deleteMission(${mission.missionId})" class="btn btn-danger btn-sm">Delete</button>
+                                                         <button id="delete" onclick="deleteMission(${mission.missionId
+                            })" class="btn btn-danger btn-sm">Delete</button>
                                                      </td>
                                                  </tr>
                                                 `);
@@ -189,15 +183,15 @@
                             `);
         }
 
-        $("#admiralbtn").click(function () {
+        $("#admiralbtn").click(function() {
             $.ajax({
                 type: "GET",
                 url: "/api/Admiral",
                 data: "",
                 dataType: "json",
-                success: function (response) {
+                success: function(response) {
                     CreateAdmiralTable();
-                    response.forEach(function (admiral) {
+                    response.forEach(function(admiral) {
                         $("#admiralsBody").append(`
                                                      <tr>
                                                      <td>
@@ -219,10 +213,17 @@
                                                          ${admiral.Crew}
                                                      </td>
                                                      <td>
-                                                         ${admiral.Missions}
+                                                        <ul class="list-unstyled">
+                                                             ${admiral.Missions.map(am => `<strong>Mission ${am.MissionId}</strong> </br> <hr/> <li>
+                                                                                          <strong>Type:</strong> ${am.Type} </br> 
+                                                                                          <strong>Date:</strong> ${am.StartDate} </br> 
+                                                                                          <strong>Is Success:</strong>${am.IsSuccess} </br>
+                                                                                         </li>`).join(' ')} 
+                                                        </ul>
                                                      </td>
                                                      <td>
-                                                         <button id="delete" onclick="deleteMission(${admiral.AdmiralId})" class="btn btn-danger btn-sm">Delete</button>
+                                                         <button id="delete" onclick="deleteMission(${admiral.AdmiralId
+                            })" class="btn btn-danger btn-sm">Delete</button>
                                                      </td>
                                                  </tr>
                                                 `);
@@ -232,7 +233,7 @@
             });
 
         });
-        
+
         //Planet
         function CreatePlanetTable() {
             $("#myTabContent").html(`
@@ -251,15 +252,15 @@
                             `);
         }
 
-        $("#planetbtn").click(function () {
+        $("#planetbtn").click(function() {
             $.ajax({
                 type: "GET",
                 url: "/api/Planet",
                 data: "",
                 dataType: "json",
-                success: function (response) {
+                success: function(response) {
                     CreatePlanetTable();
-                    response.forEach(function (planet) {
+                    response.forEach(function(planet) {
                         $("#planetsBody").append(`
                                                      <tr>
                                                      <td>
@@ -274,7 +275,8 @@
                                                         </ul>
                                                      </td>
                                                      <td>
-                                                         <button id="delete" onclick="deleteMission(${planet.PlanetId})" class="btn btn-danger btn-sm">Delete</button>
+                                                         <button id="delete" onclick="deleteMission(${planet.PlanetId
+                            })" class="btn btn-danger btn-sm">Delete</button>
                                                      </td>
                                                  </tr>
                                                 `);
@@ -290,13 +292,13 @@
             for (var mission of planet.Missions) {
                 template += `<li>
                             ${mission.Type}
-                            </li>`
+                            </li>`;
             }
 
             return template;
         }
 
-        
+
         //Empire
         function CreateEmpireTable() {
             $("#myTabContent").html(`
@@ -318,15 +320,15 @@
                             `);
         }
 
-        $("#empirebtn").click(function () {
+        $("#empirebtn").click(function() {
             $.ajax({
                 type: "GET",
                 url: "/api/Empire",
                 data: "",
                 dataType: "json",
-                success: function (response) {
+                success: function(response) {
                     CreateEmpireTable();
-                    response.forEach(function (empire) {
+                    response.forEach(function(empire) {
                         $("#empiresBody").append(`
                                                      <tr>
                                                      <td>
@@ -345,10 +347,13 @@
                                                          ${empire.Emperor}
                                                      </td>
                                                      <td>
-                                                         ${empire.Admirals}
+                                                         <ul class="list-unstyled">
+                                                         ${ShowEmpireAdmirals(empire)}
+                                                         </ul>
                                                      </td>
                                                      <td>
-                                                         <button id="delete" onclick="deleteMission(${empire.EmpireId})" class="btn btn-danger btn-sm">Delete</button>
+                                                         <button id="delete" onclick="deleteMission(${empire.EmpireId
+                            })" class="btn btn-danger btn-sm">Delete</button>
                                                      </td>
                                                  </tr>
                                                 `);
@@ -358,6 +363,19 @@
             });
 
         });
+
+        function ShowEmpireAdmirals(empire) {
+            let template = "";
+            for (var admiral of empire.Admirals) {
+                template += `
+                            ${admiral.Name}
+                                 <strong>Species: </strong>
+                            ${admiral.Species}
+                            </li></br>`;
+            }
+
+            return template;
+        }
 
         //Emperor
         function CreateEmperorTable() {
@@ -378,15 +396,15 @@
                             `);
         }
 
-        $("#emperorbtn").click(function () {
+        $("#emperorbtn").click(function() {
             $.ajax({
                 type: "GET",
                 url: "/api/Emperor",
                 data: "",
                 dataType: "json",
-                success: function (response) {
+                success: function(response) {
                     CreateEmperorTable();
-                    response.forEach(function (emperor) {
+                    response.forEach(function(emperor) {
                         $("#emperorsBody").append(`
                                                      <tr>
                                                      <td>
@@ -402,7 +420,8 @@
                                                          ${emperor.Empire}
                                                      </td>
                                                      <td>
-                                                         <button id="delete" onclick="deleteMission(${emperor.EmperorId})" class="btn btn-danger btn-sm">Delete</button>
+                                                         <button id="delete" onclick="deleteMission(${emperor.EmperorId
+                            })" class="btn btn-danger btn-sm">Delete</button>
                                                      </td>
                                                  </tr>
                                                 `);

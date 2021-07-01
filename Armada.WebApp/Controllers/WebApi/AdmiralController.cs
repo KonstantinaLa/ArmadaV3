@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using ArmadaV3.Database;
@@ -27,30 +23,26 @@ namespace Armada.WebApp.Controllers.WebApi
         // GET: api/Admiral
         public IHttpActionResult GetAdmirals()
         {
-            
-
-            var admirals = unitOfWork.Admirals.Get().Select(a => new
+            var admirals =unitOfWork.Admirals.Get().Select(a => new
             {
                 AdmiralId = a.AdmiralId,
                 Name = a.Name,
                 Age = a.Age,
-                EnlistmentDate = a.EnlistmentDate,
+                EnlistmentDate = a.EnlistmentDate.ToString("d"),
                 Photo = a.Photo,
                 Description = a.Description,
-                Emprire = a.Empire.Name,
+                Empire = a.Empire.Name,
                 Crew = a.Crew.Number,
-                Missions = a.AdmiralMissions.Select(m => new
+                Missions = a.AdmiralMissions.Join(unitOfWork.Missions.Get(), ad=>ad.MissionId , m=>m.MissionId ,(ad ,m )=> new
                 {
-                    Mission = m.Mission.
+                    MissionId = m.MissionId,
+                    Type = m.Type,
+                    StartDate = m.StartDate.ToString("d"),
+                    IsSuccess = ad.IsSuccess
                 })
+               
             });
 
-
-            //new
-            //{
-
-            //    MisionId = m.MissionId
-            //}
             return Ok(admirals);
         }
 

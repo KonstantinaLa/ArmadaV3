@@ -40,7 +40,7 @@ namespace Armada.WebApp.Controllers.WebApi
                 {
                     AdmiralId = a.AdmiralId,
                     Name = a.Name,
-                    Species = a.Species
+                    Species = a.Species.ToString()
                 })
 
             }) ; 
