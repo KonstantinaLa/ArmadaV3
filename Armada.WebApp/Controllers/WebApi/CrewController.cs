@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using ArmadaV3.Database;
@@ -17,6 +13,7 @@ namespace Armada.WebApp.Controllers.WebApi
 
     public class CrewController : ApiController
     {
+       
         private ApplicationDbContext db = new ApplicationDbContext();
         private readonly IUnitOfWork unitOfWork;
 
@@ -120,25 +117,24 @@ namespace Armada.WebApp.Controllers.WebApi
 
         // DELETE: api/Crew/5
         [ResponseType(typeof(Crew))]
-        public IHttpActionResult DeleteCrew(int id)
+        public IHttpActionResult DeleteCrew(int? id)
         {
-            Crew crew = db.Crews.Find(id);
-            if (crew == null)
-            {
-                return NotFound();
-            }
+            var crew = unitOfWork.Crew.FindById(id);
 
-            db.Crews.Remove(crew);
-            db.SaveChanges();
+            if (crew == null) return NotFound();
+
+            unitOfWork.Crew.Delete(crew);
+            unitOfWork.Save();
 
             return Ok(crew);
+
         }
 
         protected override void Dispose(bool disposing)
         {
             if (disposing)
             {
-                db.Dispose();
+                unitOfWork.Dispose();
             }
             base.Dispose(disposing);
         }

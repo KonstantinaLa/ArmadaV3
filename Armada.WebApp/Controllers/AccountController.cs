@@ -4,6 +4,7 @@ using System.Web;
 using System.Web.Mvc;
 using Armada.WebApp.ViewModels.AccountViewModels;
 using ArmadaV3.Entities;
+using LoggerLibrary;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
@@ -13,11 +14,20 @@ namespace Armada.WebApp.Controllers
     [Authorize]
     public class AccountController : Controller
     {
+        private ILog iLog;
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
         public AccountController()
         {
+            iLog = Log.GetInstance;
+        }
+
+        protected override void OnException(ExceptionContext filterContext)
+        {
+            iLog.LogException(filterContext.Exception.ToString());
+            filterContext.ExceptionHandled = true;
+            this.View("Error").ExecuteResult(this.ControllerContext);
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )

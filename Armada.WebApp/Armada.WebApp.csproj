@@ -201,7 +201,6 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\TestAdmiralsController.cs" />
     <Compile Include="Controllers\WebApi\AdmiralController.cs" />
     <Compile Include="Controllers\WebApi\CrewController.cs" />
     <Compile Include="Controllers\WebApi\EmperorController.cs" />
@@ -433,6 +432,10 @@
     <ProjectReference Include="..\ArmadaV3.RepositoryService\ArmadaV3.RepositoryService.csproj">
       <Project>{309D6A42-87FC-4261-A530-A3D092E0A949}</Project>
       <Name>ArmadaV3.RepositoryService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LoggerLibrary\LoggerLibrary.csproj">
+      <Project>{E413F9E0-BA8F-4EC7-9E9D-DADB6286629E}</Project>
+      <Name>LoggerLibrary</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
