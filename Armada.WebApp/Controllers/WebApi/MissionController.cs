@@ -33,14 +33,18 @@ namespace Armada.WebApp.Controllers.WebApi
                 Type = m.Type,
                 StartDate = m.StartDate,
                 EndDate = m.EndDate,
-                Planets = new 
-                {
-                    Name = m.Planets.Select( p => p.Name)
-                },
-                Admirals = new
-                {
-                    Name = m.AdmiralMissions.Select( a=> a.Admiral.Name)
-                }
+                Planets = m.Planets.Select( y => new 
+                { 
+                    PlanetId = y.PlanetId,
+                    Name = y.Name,
+                    StarSystem = y.StarSystem
+                }),
+                Admirals = m.AdmiralMissions.Join(unitOfWork.Admirals.Get(), ad=>ad.AdmiralId, x=>x.AdmiralId,(ad,x) => new 
+                { 
+                    AdmiralId = x.AdmiralId,
+                    Name = x.Name
+
+                })
             });
 
             return Ok(missions);
