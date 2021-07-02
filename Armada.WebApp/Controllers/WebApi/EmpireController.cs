@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using ArmadaV3.Database;
@@ -34,8 +30,6 @@ namespace Armada.WebApp.Controllers.WebApi
                 Trait = e.Trait,
                 ControlledSystem = e.ControlledSystems,
                 Photo = e.Photo,
-                Description = e.Description,
-                Emperor = e.Emperor?.Name,
                 Admirals = e.Admirals.Select(a => new
                 {
                     AdmiralId = a.AdmiralId,
@@ -50,15 +44,13 @@ namespace Armada.WebApp.Controllers.WebApi
 
         // GET: api/Empire/5
         [ResponseType(typeof(Empire))]
-        public IHttpActionResult GetEmpire(int id)
+        public IHttpActionResult GetEmpire(int? id)
         {
-            Empire empire = db.Empires.Find(id);
-            if (empire == null)
-            {
-                return NotFound();
-            }
+            var empire = unitOfWork.Empires.FindById(id);
 
-            return Ok(empire);
+            if (empire == null) return NotFound();
+
+            return Ok(new{Emperor = empire.Emperor?.Name , Description = empire.Description});
         }
 
         // PUT: api/Empire/5
@@ -113,16 +105,14 @@ namespace Armada.WebApp.Controllers.WebApi
 
         // DELETE: api/Empire/5
         [ResponseType(typeof(Empire))]
-        public IHttpActionResult DeleteEmpire(int id)
+        public IHttpActionResult DeleteEmpire(int? id)
         {
-            Empire empire = db.Empires.Find(id);
-            if (empire == null)
-            {
-                return NotFound();
-            }
+            Empire empire = unitOfWork.Empires.FindById(id);
 
-            db.Empires.Remove(empire);
-            db.SaveChanges();
+            if (empire == null) return NotFound();
+
+            unitOfWork.Empires.Delete(empire);
+            unitOfWork.Save();
 
             return Ok(empire);
         }
@@ -131,7 +121,7 @@ namespace Armada.WebApp.Controllers.WebApi
         {
             if (disposing)
             {
-                db.Dispose();
+                unitOfWork.Dispose();
             }
             base.Dispose(disposing);
         }

@@ -31,8 +31,7 @@ namespace Armada.WebApp.Controllers.WebApi
                 EnlistmentDate = a.EnlistmentDate.ToString("d"),
                 Photo = a.Photo,
                 Description = a.Description,
-                Empire = a.Empire.Name,
-                Crew = a.Crew.Number,
+                Crew = a.Crew?.Number,
                 Missions = a.AdmiralMissions.Join(unitOfWork.Missions.Get(), ad=>ad.MissionId , m=>m.MissionId ,(ad ,m )=> new
                 {
                     MissionId = m.MissionId,
@@ -50,13 +49,13 @@ namespace Armada.WebApp.Controllers.WebApi
         [ResponseType(typeof(Admiral))]
         public IHttpActionResult GetAdmiral(int id)
         {
-            Admiral admiral = db.Admirals.Find(id);
+            var admiral = unitOfWork.Admirals.FindById(id);
             if (admiral == null)
             {
                 return NotFound();
             }
 
-            return Ok(admiral);
+            return Ok(new { EnlistmentDate = admiral.EnlistmentDate.ToString("d"), Empire = admiral.Empire.Name, Description = admiral.Description });
         }
 
         // PUT: api/Admiral/5
@@ -111,16 +110,13 @@ namespace Armada.WebApp.Controllers.WebApi
 
         // DELETE: api/Admiral/5
         [ResponseType(typeof(Admiral))]
-        public IHttpActionResult DeleteAdmiral(int id)
+        public IHttpActionResult DeleteAdmiral(int? id)
         {
-            Admiral admiral = db.Admirals.Find(id);
-            if (admiral == null)
-            {
-                return NotFound();
-            }
+            var admiral = unitOfWork.Admirals.FindById(id);
+            if (admiral == null) return NotFound();
 
-            db.Admirals.Remove(admiral);
-            db.SaveChanges();
+            unitOfWork.Admirals.Delete(admiral);
+            unitOfWork.Save();
 
             return Ok(admiral);
         }
@@ -129,7 +125,7 @@ namespace Armada.WebApp.Controllers.WebApi
         {
             if (disposing)
             {
-                db.Dispose();
+                unitOfWork.Dispose();
             }
             base.Dispose(disposing);
         }

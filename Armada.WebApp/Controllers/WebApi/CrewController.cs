@@ -39,15 +39,13 @@ namespace Armada.WebApp.Controllers.WebApi
 
         // GET: api/Crew/5
         [ResponseType(typeof(Crew))]
-        public IHttpActionResult GetCrew(int id)
+        public IHttpActionResult GetCrew(int? id)
         {
-            Crew crew = db.Crews.Find(id);
-            if (crew == null)
-            {
-                return NotFound();
-            }
+            var crew = unitOfWork.Crew.FindById(id);
 
-            return Ok(crew);
+            if (crew == null) return NotFound();
+
+            return Ok(new {Crewid = crew.CrewId , Number = crew.Number , Specialty = crew.Specialty, Admiral = crew.Admiral.Name });
         }
 
         // PUT: api/Crew/5

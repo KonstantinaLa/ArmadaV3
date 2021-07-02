@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using ArmadaV3.Database;
@@ -31,8 +27,7 @@ namespace Armada.WebApp.Controllers.WebApi
             { 
                 MissionId = m.MissionId,
                 Type = m.Type,
-                StartDate = m.StartDate,
-                EndDate = m.EndDate,
+                Duration = m.Duration,
                 Planets = m.Planets.Select( y => new 
                 { 
                     PlanetId = y.PlanetId,
@@ -52,15 +47,17 @@ namespace Armada.WebApp.Controllers.WebApi
 
         // GET: api/Mission/5
         [ResponseType(typeof(Mission))]
-        public IHttpActionResult GetMission(int id)
+        public IHttpActionResult GetMission(int? id)
         {
-            Mission mission = db.Missions.Find(id);
-            if (mission == null)
-            {
-                return NotFound();
-            }
+            var mission = unitOfWork.Missions.FindById(id);
 
-            return Ok(mission);
+            if (mission == null) return NotFound();
+           
+            return Ok(new
+            {
+                StartDate = mission.StartDate.ToString("d"),
+                EndDate = mission.EndDate.ToString("d"),
+            });
         }
 
         // PUT: api/Mission/5
@@ -115,16 +112,14 @@ namespace Armada.WebApp.Controllers.WebApi
 
         // DELETE: api/Mission/5
         [ResponseType(typeof(Mission))]
-        public IHttpActionResult DeleteMission(int id)
+        public IHttpActionResult DeleteMission(int? id)
         {
-            Mission mission = db.Missions.Find(id);
-            if (mission == null)
-            {
-                return NotFound();
-            }
+            var mission = unitOfWork.Missions.FindById(id);
 
-            db.Missions.Remove(mission);
-            db.SaveChanges();
+            if (mission == null) return NotFound();
+
+            unitOfWork.Missions.Delete(mission);
+            unitOfWork.Save();
 
             return Ok(mission);
         }
@@ -133,7 +128,7 @@ namespace Armada.WebApp.Controllers.WebApi
         {
             if (disposing)
             {
-                db.Dispose();
+                unitOfWork.Dispose();
             }
             base.Dispose(disposing);
         }

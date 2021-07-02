@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using ArmadaV3.Database;
@@ -23,6 +19,7 @@ namespace Armada.WebApp.Controllers.WebApi
         {
             unitOfWork = new UnitOfWork();
         }
+
         // GET: api/Emperor
         public IHttpActionResult GetEmperors()
         {
@@ -32,9 +29,7 @@ namespace Armada.WebApp.Controllers.WebApi
                 Name = e.Name,
                 Age = e.Age,
                 Photo = e.Photo,
-                Description = e.Description,
                 Empire = e.Empire.Name
-
             });
 
             return Ok(emperor);
@@ -42,15 +37,13 @@ namespace Armada.WebApp.Controllers.WebApi
 
         // GET: api/Emperor/5
         [ResponseType(typeof(Emperor))]
-        public IHttpActionResult GetEmperor(int id)
+        public IHttpActionResult GetEmperor(int? id)
         {
-            Emperor emperor = db.Emperors.Find(id);
-            if (emperor == null)
-            {
-                return NotFound();
-            }
+            var emperor = unitOfWork.Emperors.FindById(id);
 
-            return Ok(emperor);
+            if (emperor == null) return NotFound();
+
+            return Ok(new{Description = emperor.Description});
         }
 
         // PUT: api/Emperor/5
@@ -120,16 +113,14 @@ namespace Armada.WebApp.Controllers.WebApi
 
         // DELETE: api/Emperor/5
         [ResponseType(typeof(Emperor))]
-        public IHttpActionResult DeleteEmperor(int id)
+        public IHttpActionResult DeleteEmperor(int? id)
         {
-            Emperor emperor = db.Emperors.Find(id);
-            if (emperor == null)
-            {
-                return NotFound();
-            }
+            var emperor = unitOfWork.Emperors.FindById(id);
 
-            db.Emperors.Remove(emperor);
-            db.SaveChanges();
+            if (emperor == null) return NotFound();
+
+            unitOfWork.Emperors.Delete(emperor);
+            unitOfWork.Save();
 
             return Ok(emperor);
         }
@@ -138,7 +129,7 @@ namespace Armada.WebApp.Controllers.WebApi
         {
             if (disposing)
             {
-                db.Dispose();
+                unitOfWork.Dispose();
             }
             base.Dispose(disposing);
         }

@@ -1,97 +1,98 @@
 ﻿@{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Admin";
 }
 
-
+@*Admin NavBar*@
 <div class="nav ">
     <ul class="nav nav-tabs m-auto p-3">
         <li class="nav-item">
-            <a class="nav-link active" data-bs-toggle="tab" href="#home">Home</a>
+            <a class="nav-link active" data-bs-toggle="tab" href="~/Admin/Index">Home</a>
         </li>
         <li class="nav-item">
-            <button id="crewbtn" class="nav-link btn">Crew</button>
+            <button id="crewTablebtn" class="nav-link btn">Crew</button>
         </li>
         <li class="nav-item">
-            <button id="missionbtn" class="nav-link btn">Missions</button>
+            <button id="missionTablebtn" class="nav-link btn">Missions</button>
         </li>
         <li class="nav-item">
-            <button id="admiralbtn" class="nav-link btn">Admirals</button>
+            <button id="admiralTablebtn" class="nav-link btn">Admirals</button>
         </li>
         <li class="nav-item">
-            <button id="planetbtn" class="nav-link btn">Planets</button>
+            <button id="planetTablebtn" class="nav-link btn">Planets</button>
         </li>
         <li class="nav-item">
-            <button id="empirebtn" class="nav-link btn">Empire</button>
+            <button id="empireTablebtn" class="nav-link btn">Empire</button>
         </li>
         <li class="nav-item">
-            <button id="emperorbtn" class="nav-link btn">Emperor</button>
+            <button id="emperorTablebtn" class="nav-link btn">Emperor</button>
         </li>
     </ul>
 </div>
 
+<div class="container">
+    <div id="TabContent" class="tab-content">
+        <div id="home" class="tab-pane fade active show">
+            <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
+        </div>
+        <div class="tab-pane fade" id="profile">
+            <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit.</p>
+        </div>
+        <div class="tab-pane fade" id="dropdown1">
+            <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork.</p>
+        </div>
+        <div class="tab-pane fade" id="dropdown2">
+            <p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater.</p>
+        </div>
+    </div>
+</div>
+
 @*Modal*@
-<div class="modal" id="deleteModal">
+<div class="modal" id="ArmadaModal">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Delete Element</h5>
+                <h5 class="modal-title">Armada Admin Management</h5>
                 <button type="button" class="btn-close close" data-bs-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true"></span>
                 </button>
             </div>
-            <div class="modal-body">
-                <p>Are you sure you want to delete</p>
-            </div>
-            <div class="modal-footer" id="modalfooterbtn">
+            <div id="modalBody" class="modal-body">
                
+            </div>
+            <div  id="modalFooter" class="modal-footer">
             </div>
         </div>
     </div>
 </div>
 
-
-    <div class="container">
-        <div id="myTabContent" class="tab-content">
-            <div class="tab-pane fade active show" id="home">
-                <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
-            </div>
-            <div class="tab-pane fade" id="profile">
-                <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit.</p>
-            </div>
-            <div class="tab-pane fade" id="dropdown1">
-                <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork.</p>
-            </div>
-            <div class="tab-pane fade" id="dropdown2">
-                <p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater.</p>
-            </div>
-        </div>
-    </div>
-<div id="alertEmperor" class="container"></div>
-
-
+@*AlertMessage*@
+<div id="deleteAlert" class="container"></div>
 
 @section scripts
 {
     <script>
+
         //Crew
         function CreateCrewTable() {
-            $("#myTabContent").html(`
-                                <table class="table table-hover table-bordered">
-                                    <thead>
-                                        <tr>
-                                            <th>Number</th>
-                                            <th>Specialty</th>
-                                            <th>Admiral</th>
-                                            <th>Actions</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="crewBody">
-                                </tbody>
-                             </table>
-                            `);
+            $("#TabContent").html(`
+                                   <h2 class="m-4 text-center">Crew</h2>
+                                    <table class="table table-hover table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Number</th>
+                                                <th>Specialty</th>
+                                                <th>Admiral</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="crewBody">
+                                    </tbody>
+                                 </table>
+                                <button id="create" onclick="" class="btn btn-primary m-1">Create New</button>
+                                `);
         }
 
-        $("#crewbtn").click(function() {
+        $("#crewTablebtn").click(function() {
             $.ajax({
                 type: "GET",
                 url: "/api/Crew",
@@ -101,49 +102,120 @@
                     CreateCrewTable();
                     response.forEach(function(crew) {
                         $("#crewBody").append(`
-                                                     <tr>
-                                                     <td>
-                                                         ${crew.Number}
-                                                     </td>
-                                                     <td>
-                                                         ${crew.Specialty}
-                                                     </td>
-                                                        <td>
-                                                         ${crew.Admiral}
-                                                     </td>
+                                                         <tr id=crew${crew.CrewId}>
+                                                         <td>
+                                                             ${crew.Number}
+                                                         </td>
+                                                         <td>
+                                                             ${crew.Specialty}
+                                                         </td>
+                                                            <td>
+                                                             ${crew.Admiral}
+                                                         </td>
 
-                                                     <td>
-                                                         <button id="delete" onclick="deleteCrew(${crew.CrewId})" class="btn btn-danger btn-sm">Delete</button>
-                                                     </td>
-                                                 </tr>
-                                                `);
+                                                         <td>
+                                                             <button id="info" onclick="ShowCrewInfoModal(${crew.CrewId})" class="btn btn-info btn-sm">Info</button>
+                                                             <button id="edit" onclick="(${crew.CrewId})" class="btn btn-primary btn-sm">Edit</button>
+                                                             <button id="delete" onclick="ShowCrewDeleteModal(${crew.CrewId})" class="btn btn-danger btn-sm">Delete</button>
+                                                         </td>
+                                                     </tr>
+                                                    `);
                     });
                 }
             });
 
         });
 
-        //Mission
-        function CreateMissionTable() {
-            $("#myTabContent").html(`
-                                <table class="table table-hover table-bordered">
-                                    <thead>
-                                        <tr>
-                                            <th>Type</th>
-                                            <th>Start Date</th>
-                                            <th>End Date</th>
-                                            <th>Planets</th>
-                                            <th>Admirals</th>
-                                            <th>Actions</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="missionsBody">
-                                </tbody>
-                             </table>
-                            `);
+        function ShowCrewInfoModal(id) {
+            $.ajax({
+                type: "GET",
+                url: `/api/Crew/?id=${id}`,
+                data: "",
+                dataType: "json",
+                success: function (response) {
+                    $(document).ready(function() {
+                        $("#ArmadaModal").modal();
+                    });
+
+                    $("#modalBody").html(`<ul>
+                                             <li>  <h6><strong>Crew Number:</strong> ${response.Number} </li>
+                                             <li>  <strong>Specialty:</strong> ${response.Specialty} </li>
+                                             <li>  <strong>Admiral in charge:</strong> ${response.Admiral}</h6></li>
+                                            <ul>`);
+
+                    $("#modalFooter").html('<button type="button" class="btn btn-secondary close" data-bs-dismiss="modal">Cancel</button>');
+
+                    $(".close").click(function() {
+                        $("#ArmadaModal").modal("hide");
+                    });
+                }
+            });
         }
 
-        $("#missionbtn").click(function() {
+        function ShowCrewDeleteModal(id) {
+            $(document).ready(function() {
+                $("#ArmadaModal").modal();
+            });
+
+            $("#modalBody").html("<h6><strong>Are you sure you want to delete this?</strong></h6>");
+
+            $("#modalFooter").html(
+                `
+                                <button type="button" onclick="DeleteCrew(${id
+                })" class="btn btn-danger deletebtn">Delete</button>
+                                <button type="button" class="btn btn-secondary close" data-bs-dismiss="modal">Cancel</button>
+                                `
+            );
+
+            $(".close").click(function() {
+                $("#ArmadaModal").modal("hide");
+            });
+        }
+
+        function DeleteCrew(id) {
+            $.ajax({
+                type: "DELETE",
+                url: `/api/Crew/?id=${id}`,
+                data: "",
+                dataType: "json",
+                success: function(response) {
+                    setTimeout(() => $("#deleteAlert").html(`
+                                                <div class="alert alert-dismissible alert-warning">
+                                                  <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                                                  <h4 class="alert-heading">Successfully deleted</h4>
+                                                  <p class="mb-0">${response.Specialty}</p>
+                                                </div>
+                                            `).fadeOut(4000),
+                        500);
+                }
+            });
+            $("#ArmadaModal").modal("hide");
+            $(`#crew${id}`).remove();
+        }
+
+
+        //Mission
+        function CreateMissionTable() {
+            $("#TabContent").html(`
+                                    <h2 class="m-4 text-center">Missions</h2>
+                                    <table class="table table-hover table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Type</th>
+                                                <th>Duration</th>
+                                                <th>Planets</th>
+                                                <th>Admirals</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="missionsBody">
+                                    </tbody>
+                                 </table>
+                                <button id="create" onclick="" class="btn btn-primary m-1">Create New</button>
+                                `);
+        }
+
+        $("#missionTablebtn").click(function() {
             $.ajax({
                 type: "GET",
                 url: "/api/Mission",
@@ -153,32 +225,30 @@
                     CreateMissionTable();
                     response.forEach(function(mission) {
                         $("#missionsBody").append(`
-                                                     <tr>
-                                                     <td>
-                                                         ${mission.Type}
-                                                     </td>
-                                                     <td>
-                                                         ${mission.StartDate}
-                                                     </td>
-                                                     <td>
-                                                         ${mission.EndDate}
-                                                     </td>
-                                                     <td>
-                                                         <ul class = "list-unstyled">
-                                                            ${ShowMissionPlanets(mission)}
-                                                        </ul>
-                                                     </td>
-                                                     <td>
-                                                         <ul class = "list-unstyled">
-                                                            ${ShowMissionAdmirals(mission)}
-                                                        </ul>
-                                                     </td>
-                                                     <td>
-                                                         <button id="delete" onclick="deleteMission(${mission.missionId
-                            })" class="btn btn-danger btn-sm">Delete</button>
-                                                     </td>
-                                                 </tr>
-                                                `);
+                                                    <tr id = miss${mission.MissionId}>
+                                                         <td>
+                                                             ${mission.Type}
+                                                         </td>
+                                                         <td>
+                                                             ${mission.Duration}
+                                                         </td>
+                                                         <td>
+                                                             <ul class = "list-unstyled">
+                                                                ${ShowMissionPlanets(mission)}
+                                                            </ul>
+                                                         </td>
+                                                         <td>
+                                                             <ul class = "list-unstyled">
+                                                                ${ShowMissionAdmirals(mission)}
+                                                            </ul>
+                                                         </td>
+                                                         <td>
+                                                             <button id="info" onclick="ShowMissionInfoModal(${mission.MissionId})" class="btn btn-info btn-sm">Info</button>
+                                                             <button id="edit" onclick="" class="btn btn-primary btn-sm">Edit</button>
+                                                             <button id="delete" onclick="ShowMissionDeleteModal(${mission.MissionId})" class="btn btn-danger btn-sm">Delete</button>
+                                                         </td>
+                                                     </tr>
+                                                    `);
                     });
 
                 }
@@ -190,8 +260,8 @@
             let template = "";
             for (var admiral of mission.Admirals) {
                 template += `<li>
-                            ${admiral.Name}
-                            </li>`;
+                                ${admiral.Name}
+                                </li>`;
             }
 
             return template;
@@ -201,36 +271,103 @@
             let template = "";
             for (var planet of mission.Planets) {
                 template += `<li>
-                            ${planet.Name}
-                            </li>`;
+                                ${planet.Name}
+                                </li>`;
             }
 
             return template;
         }
 
-        //Admiral
-        function CreateAdmiralTable() {
-            $("#myTabContent").html(`
-                                <table class="table table-hover table-bordered">
-                                    <thead>
-                                        <tr>
-                                            <th>Photo</th>
-                                            <th>Name</th>
-                                            <th>Age</th>
-                                            <th>Enlistment Date</th>
-                                            <th>Empire</th>
-                                            <th>Crew</th>
-                                            <th>Missions</th>
-                                            <th>Actions</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="admiralsBody">
-                                </tbody>
-                             </table>
-                            `);
+        function ShowMissionInfoModal(id) {
+            $.ajax({
+                type: "GET",
+                url: `/api/Mission/?id=${id}`,
+                data: "",
+                dataType: "json",
+                success: function (response) {
+                    $(document).ready(function() {
+                        $("#ArmadaModal").modal();
+                    });
+
+                    $("#modalBody").html(`<ul>
+                                             <li>  <h6><strong>Start Date:</strong> ${response.StartDate} </li>
+                                             <li>  <strong>End Date:</strong> ${response.EndDate} </li>
+                                            <ul>`);
+
+                    $("#modalFooter").html('<button type="button" class="btn btn-secondary close" data-bs-dismiss="modal">Cancel</button>');
+
+                    $(".close").click(function() {
+                        $("#ArmadaModal").modal("hide");
+                    });
+                }
+            });
         }
 
-        $("#admiralbtn").click(function() {
+        function ShowMissionDeleteModal(id) {
+            $(document).ready(function() {
+                $("#ArmadaModal").modal();
+            });
+
+            $("#modalBody").html("<h6><strong>Are you sure you want to delete this?</strong></h6>");
+
+            $("#modalFooter").html(
+                `
+                                <button type="button" onclick="DeleteMission(${id
+                })" class="btn btn-danger deletebtn">Delete</button>
+                                <button type="button" class="btn btn-secondary close" data-bs-dismiss="modal">Cancel</button>
+                                `
+            );
+
+            $(".close").click(function() {
+                $("#ArmadaModal").modal("hide");
+            });
+        }
+
+        function DeleteMission(id) {
+            $.ajax({
+                type: "DELETE",
+                url: `/api/Mission/?id=${id}`,
+                data: "",
+                dataType: "json",
+                success: function(response) {
+                    setTimeout(() => $("#deleteAlert").html(`
+                                                <div class="alert alert-dismissible alert-warning">
+                                                  <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                                                  <h4 class="alert-heading">Successfully deleted</h4>
+                                                  <p class="mb-0">${response.Type}</p>
+                                                </div>
+                                            `).fadeOut(4000),
+                        500);
+                }
+            });
+            $("#ArmadaModal").modal("hide");
+            $(`#miss${id}`).remove();
+        }
+
+
+        //Admiral
+        function CreateAdmiralTable() {
+            $("#TabContent").html(`
+                                     <h2 class="m-4 text-center">Admirals</h2>
+                                    <table class="table table-hover table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Photo</th>
+                                                <th>Name</th>
+                                                <th>Age</th>
+                                                <th>Crew</th>
+                                                <th>Missions</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="admiralsBody">
+                                    </tbody>
+                                 </table>
+                               <button id="create" onclick="" class="btn btn-primary m-1">Create New</button>
+                                `);
+        }
+
+        $("#admiralTablebtn").click(function() {
             $.ajax({
                 type: "GET",
                 url: "/api/Admiral",
@@ -240,66 +377,129 @@
                     CreateAdmiralTable();
                     response.forEach(function(admiral) {
                         $("#admiralsBody").append(`
-                                                     <tr>
-                                                     <td>
-                                                         ${admiral.Photo}
-                                                     </td>
-                                                     <td>
-                                                         ${admiral.Name}
-                                                     </td>
-                                                     <td>
-                                                         ${admiral.Age}
-                                                     </td>
-                                                     <td>
-                                                         ${admiral.EnlistmentDate}
-                                                     </td>
-                                                     <td>
-                                                         ${admiral.Empire}
-                                                     </td>
-                                                     <td>
-                                                         ${admiral.Crew}
-                                                     </td>
-                                                     <td>
-                                                        <ul class="list-unstyled">
-                                                             ${admiral.Missions.map(am => `<strong>Mission ${am.MissionId}</strong> </br> <hr/> <li>
-                                                                                          <strong>Type:</strong> ${am.Type} </br> 
-                                                                                          <strong>Date:</strong> ${am.StartDate} </br> 
-                                                                                          <strong>Is Success:</strong>${am.IsSuccess} </br>
-                                                                                         </li>`).join(' ')} 
-                                                        </ul>
-                                                     </td>
-                                                     <td>
-                                                         <button id="delete" onclick="deleteMission(${admiral.AdmiralId
-                            })" class="btn btn-danger btn-sm">Delete</button>
-                                                     </td>
-                                                 </tr>
-                                                `);
+                                                     <tr id = "adm${admiral.AdmiralId}">
+                                                         <td>
+                                                             ${admiral.Photo}
+                                                         </td>
+                                                         <td>
+                                                             ${admiral.Name}
+                                                         </td>
+                                                         <td>
+                                                             ${admiral.Age}
+                                                         </td>
+                                                         <td>
+                                                             ${admiral.Crew}
+                                                         </td>
+                                                         <td>
+                                                            <ul class="list-unstyled">
+                                                                 ${admiral.Missions.map(am => `<strong>Mission ${am.MissionId}</strong> </br> <hr/>                                                                                           <li>
+                                                                                              <strong>Type:</strong> ${am.Type} </br>
+                                                                                              <strong>Date:</strong> ${am.StartDate} </br>
+                                                                                              <strong>Is Success:</strong>${am.IsSuccess} </br>
+                                                                                          </li>`).join(' ')}
+                                                            </ul>
+                                                         </td>
+                                                         <td>
+                                                             <button id="info" onclick="ShowAdmiralInfoModal(${admiral.AdmiralId})" class="btn btn-info btn-sm">Info</button>
+                                                             <button id="edit" onclick="" class="btn btn-primary btn-sm">Edit</button>
+                                                             <button id="delete" onclick="ShowAdmiralDeleteModal(${admiral.AdmiralId})" class="btn btn-danger btn-sm">Delete</button>
+                                                         </td>
+                                                     </tr>
+                                                    `);
                     });
-
                 }
             });
 
         });
 
-        //Planet
-        function CreatePlanetTable() {
-            $("#myTabContent").html(`
-                                <table class="table table-hover table-bordered">
-                                    <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Star System</th>
-                                            <th>Missions</th>
-                                            <th>Actions</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="planetsBody">
-                                </tbody>
-                             </table>
-                            `);
+        function ShowAdmiralInfoModal(id) {
+            $.ajax({
+                type: "GET",
+                url: `/api/Admiral/?id=${id}`,
+                data: "",
+                dataType: "json",
+                success: function (response) {
+                    $(document).ready(function() {
+                        $("#ArmadaModal").modal();
+                    });
+
+                    $("#modalBody").html(`<ul>
+                                             <li>  <strong>Serving Empire:</strong> ${response.Empire} </li>
+                                             <li>  <h6><strong>Enlistment Date:</strong> ${response.EnlistmentDate} </li>
+                                             <li>  <h6><strong>About:</strong> ${response.Description} </li>
+                                            <ul>`);
+
+                    $("#modalFooter").html('<button type="button" class="btn btn-secondary close" data-bs-dismiss="modal">Cancel</button>');
+
+                    $(".close").click(function() {
+                        $("#ArmadaModal").modal("hide");
+                    });
+                }
+            });
         }
 
-        $("#planetbtn").click(function() {
+        function ShowAdmiralDeleteModal(id) {
+            $(document).ready(function() {
+                $("#ArmadaModal").modal();
+            });
+
+            $("#modalBody").html("<h6><strong>Are you sure you want to delete this?</strong></h6>");
+
+            $("#modalFooter").html(
+                `
+                                <button type="button" onclick="DeleteAdmiral(${id})" class="btn btn-danger deletebtn">Delete</button>
+                                <button type="button" class="btn btn-secondary close" data-bs-dismiss="modal">Cancel</button>
+                                `
+            );
+
+            $(".close").click(function() {
+                $("#ArmadaModal").modal("hide");
+            });
+        }
+
+        function DeleteAdmiral(id) {
+            $.ajax({
+                type: "DELETE",
+                url: `/api/Admiral/?id=${id}`,
+                data: "",
+                dataType: "json",
+                success: function(response) {
+                    setTimeout(() => $("#deleteAlert").html(`
+                                                <div class="alert alert-dismissible alert-warning">
+                                                  <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                                                  <h4 class="alert-heading">Successfully deleted</h4>
+                                                  <p class="mb-0">${response.Name}</p>
+                                                </div>
+                                            `).fadeOut(4000),
+                        500);
+                }
+            });
+            $("#ArmadaModal").modal("hide");
+            $(`#adm${id}`).remove();
+        }
+
+
+        //Planet
+        function CreatePlanetTable() {
+            $("#TabContent").html(`
+                                     <h2 class="m-4 text-center">Planets</h2>
+                                    <table class="table table-hover table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Star System</th>
+                                                <th>Missions</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="planetsBody">
+                                    </tbody>
+                                 </table>
+                               <button id="create" onclick="" class="btn btn-primary m-1">Create New</button>
+                                `);
+        }
+
+        $("#planetTablebtn").click(function() {
             $.ajax({
                 type: "GET",
                 url: "/api/Planet",
@@ -309,24 +509,25 @@
                     CreatePlanetTable();
                     response.forEach(function(planet) {
                         $("#planetsBody").append(`
-                                                     <tr>
-                                                     <td>
-                                                         ${planet.Name}
-                                                     </td>
-                                                     <td>
-                                                         ${planet.StarSystem}
-                                                     </td>
-                                                     <td>
-                                                        <ul class = "list-unstyled">
-                                                         ${ShowPlanetMissions(planet)}
-                                                        </ul>
-                                                     </td>
-                                                     <td>
-                                                         <button id="delete" onclick="deleteMission(${planet.PlanetId
-                            })" class="btn btn-danger btn-sm">Delete</button>
-                                                     </td>
-                                                 </tr>
-                                                `);
+                                                      <tr id = pl${planet.PlanetId}>
+                                                         <td>
+                                                             ${planet.Name}
+                                                         </td>
+                                                         <td>
+                                                             ${planet.StarSystem}
+                                                         </td>
+                                                         <td>
+                                                            <ul class = "list-unstyled">
+                                                             ${ShowPlanetMissions(planet)}
+                                                            </ul>
+                                                         </td>
+                                                         <td>
+                                                             <button id="info" onclick="ShowPlanetInfoModal(${planet.PlanetId})" class="btn btn-info btn-sm">Info</button>
+                                                             <button id="edit" onclick="" class="btn btn-primary btn-sm">Edit</button>
+                                                             <button id="delete" onclick="ShowPlanetDeleteModal(${planet.PlanetId})" class="btn btn-danger btn-sm">Delete</button>
+                                                         </td>
+                                                     </tr>
+                                                    `);
                     });
 
                 }
@@ -338,36 +539,102 @@
             let template = "";
             for (var mission of planet.Missions) {
                 template += `<li>
-                            ${mission.Type}
-                            </li>`;
+                                ${mission.Type}
+                                </li>`;
             }
 
             return template;
         }
 
+        function ShowPlanetInfoModal(id) {
+            $.ajax({
+                type: "GET",
+                url: `/api/Planet/?id=${id}`,
+                data: "",
+                dataType: "json",
+                success: function (response) {
+                    $(document).ready(function() {
+                        $("#ArmadaModal").modal();
+                    });
+
+                    $("#modalBody").html(`<ul>
+                                             <li>  <strong>Name:</strong> ${response.Name} </li>
+                                             <li>  <h6><strong>Planet Type:</strong> ${response.Type} </li>
+                                            <ul>`);
+
+                    $("#modalFooter").html('<button type="button" class="btn btn-secondary close" data-bs-dismiss="modal">Cancel</button>');
+
+                    $(".close").click(function() {
+                        $("#ArmadaModal").modal("hide");
+                    });
+                }
+            });
+        }
+
+        function ShowPlanetDeleteModal(id) {
+            $(document).ready(function() {
+                $("#ArmadaModal").modal();
+            });
+
+            $("#modalBody").html("<h6><strong>Are you sure you want to delete this?</strong></h6>");
+
+            $("#modalFooter").html(
+                `
+                                <button type="button" onclick="DeletePlanet(${id
+                })" class="btn btn-danger deletebtn">Delete</button>
+                                <button type="button" class="btn btn-secondary close" data-bs-dismiss="modal">Cancel</button>
+                                `
+            );
+
+            $(".close").click(function() {
+                $("#ArmadaModal").modal("hide");
+            });
+        }
+
+        function DeletePlanet(id) {
+            $.ajax({
+                type: "DELETE",
+                url: `/api/Planet/?id=${id}`,
+                data: "",
+                dataType: "json",
+                success: function(response) {
+                    setTimeout(() => $("#deleteAlert").html(`
+                                                <div class="alert alert-dismissible alert-warning">
+                                                  <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                                                  <h4 class="alert-heading">Successfully deleted</h4>
+                                                  <p class="mb-0">${response.Name}</p>
+                                                </div>
+                                            `).fadeOut(4000), 500);
+                }
+            });
+            $("#ArmadaModal").modal("hide");
+            $(`#pl${id}`).remove();
+        }
+
 
         //Empire
         function CreateEmpireTable() {
-            $("#myTabContent").html(`
-                                <table class="table table-hover table-bordered">
-                                    <thead>
-                                        <tr>
-                                            <th>Photo</th>
-                                            <th>Name</th>
-                                            <th>Trait</th>
-                                            <th>Controlled System</th>
-                                            <th>Emperor</th>
-                                            <th>Admirals</th>
-                                            <th>Actions</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="empiresBody">
-                                </tbody>
-                             </table>
-                            `);
+            $("#TabContent").html(`
+                                  <h2 class="m-4 text-center">Empires</h2> 
+                                    <table class="table table-hover table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Photo</th>
+                                                <th>Name</th>
+                                                <th>Trait</th>
+                                                <th>Controlled System</th>
+                                                <th>Admirals</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="empiresBody">
+                                    </tbody>
+                                 </table>
+                               <button id="create" onclick="" class="btn btn-primary m-1">Create New</button>
+                                `);
         }
 
-        $("#empirebtn").click(function() {
+        $("#empireTablebtn").click(function() {
             $.ajax({
                 type: "GET",
                 url: "/api/Empire",
@@ -377,35 +644,32 @@
                     CreateEmpireTable();
                     response.forEach(function(empire) {
                         $("#empiresBody").append(`
-                                                     <tr>
-                                                     <td>
-                                                         ${empire.Photo}
-                                                     </td>
-                                                     <td>
-                                                         ${empire.Name}
-                                                     </td>
-                                                     <td>
-                                                         ${empire.Trait}
-                                                     </td>
-                                                     <td>
-                                                         ${empire.ControlledSystem}
-                                                     </td>
-                                                     <td>
-                                                         ${empire.Emperor}
-                                                     </td>
-                                                     <td>
-                                                         <ul class="list-unstyled">
-                                                         ${ShowEmpireAdmirals(empire)}
-                                                         </ul>
-                                                     </td>
-                                                     <td>
-                                                         <button id="delete" onclick="deleteMission(${empire.EmpireId
-                            })" class="btn btn-danger btn-sm">Delete</button>
-                                                     </td>
-                                                 </tr>
-                                                `);
+                                                         <tr id = "empire${empire.EmpireId}">
+                                                         <td>
+                                                             ${empire.Photo}
+                                                         </td>
+                                                         <td>
+                                                             ${empire.Name}
+                                                         </td>
+                                                         <td>
+                                                             ${empire.Trait}
+                                                         </td>
+                                                         <td>
+                                                             ${empire.ControlledSystem}
+                                                         </td>
+                                                         <td>
+                                                             <ul class="list-unstyled">
+                                                             ${ShowEmpireAdmirals(empire)}
+                                                             </ul>
+                                                         </td>
+                                                         <td>
+                                                             <button id="info" onclick="ShowEmpireInfoModal(${empire.EmpireId})" class="btn btn-info btn-sm">Info</button>
+                                                             <button id="edit" onclick="" class="btn btn-primary btn-sm">Edit</button>
+                                                             <button id="delete" onclick="ShowEmpireDeleteModal(${empire.EmpireId})" class="btn btn-danger btn-sm">Delete</button>
+                                                         </td>
+                                                     </tr>
+                                                    `);
                     });
-
                 }
             });
 
@@ -414,36 +678,105 @@
         function ShowEmpireAdmirals(empire) {
             let template = "";
             for (var admiral of empire.Admirals) {
-                template += `
-                            ${admiral.Name}
-                                 <strong>Species: </strong>
-                            ${admiral.Species}
-                            </li></br>`;
+                template += `<li>
+                                ${admiral.Name}
+                                     <strong>Species: </strong>
+                                ${admiral.Species}
+                                </li></br>`;
             }
 
             return template;
         }
 
-        //Emperor
-        function CreateEmperorTable() {
-            $("#myTabContent").html(`
-                                <table class="table table-hover table-bordered">
-                                    <thead>
-                                        <tr>
-                                            <th>Photo</th>
-                                            <th>Name</th>
-                                            <th>Age</th>
-                                            <th>Empire</th>
-                                            <th>Actions</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="emperorsBody">
-                                </tbody>
-                             </table>
-                            `);
+        function ShowEmpireInfoModal(id) {
+            $.ajax({
+                type: "GET",
+                url: `/api/Empire/?id=${id}`,
+                data: "",
+                dataType: "json",
+                success: function (response) {
+                    $(document).ready(function() {
+                        $("#ArmadaModal").modal();
+                    });
+
+                    $("#modalBody").html(`<ul>
+                                             <li>  <strong>Emperor ruling:</strong> ${response.Emperor} </li>
+                                             <li>  <h6><strong>About:</strong> ${response.Description} </li>
+                                            <ul>`);
+
+                    $("#modalFooter").html('<button type="button" class="btn btn-secondary close" data-bs-dismiss="modal">Cancel</button>');
+
+                    $(".close").click(function() {
+                        $("#ArmadaModal").modal("hide");
+                    });
+                }
+            });
         }
 
-        $("#emperorbtn").click(function() {
+        function ShowEmpireDeleteModal(id) {
+            $(document).ready(function() {
+                $("#ArmadaModal").modal();
+            });
+
+            $("#modalBody").html("<h6><strong>Are you sure you want to delete this?</strong></h6>");
+
+            $("#modalFooter").html(
+                `
+                                <button type="button" onclick="DeleteEmpire(${id
+                })" class="btn btn-danger deletebtn">Delete</button>
+                                <button type="button" class="btn btn-secondary close" data-bs-dismiss="modal">Cancel</button>
+                                `
+            );
+
+            $(".close").click(function() {
+                $("#ArmadaModal").modal("hide");
+            });
+        }
+
+        function DeleteEmpire(id) {
+            $.ajax({
+                type: "DELETE",
+                url: `/api/Empire/?id=${id}`,
+                data: "",
+                dataType: "json",
+                success: function(response) {
+                    setTimeout(() => $("#deleteAlert").html(`
+                                                <div class="alert alert-dismissible alert-warning">
+                                                  <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                                                  <h4 class="alert-heading">Successfully deleted</h4>
+                                                  <p class="mb-0">${response.Name}</p>
+                                                </div>
+                                            `).fadeOut(4000),
+                        500);
+                }
+            });
+            $("#ArmadaModal").modal("hide");
+            $(`#empire${id}`).remove();
+        }
+
+
+        //Emperor
+        function CreateEmperorTable() {
+            $("#TabContent").html(`
+                                     <h2 class="m-4 text-center">Emperors</h2>
+                                    <table class="table table-hover table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Photo</th>
+                                                <th>Name</th>
+                                                <th>Age</th>
+                                                <th>Empire</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="emperorsBody">
+                                    </tbody>
+                                 </table>
+                              <button id="create" onclick="" class="btn btn-primary m-1">Create New</button>
+                                `);
+        }
+
+        $("#emperorTablebtn").click(function() {
             $.ajax({
                 type: "GET",
                 url: "/api/Emperor",
@@ -453,24 +786,26 @@
                     CreateEmperorTable();
                     response.forEach(function(emperor) {
                         $("#emperorsBody").append(`
-                                                    <tr id=emp${emperor.EmperorId}>
-                                                        <td>
-                                                            ${emperor.Photo}
-                                                        </td>
-                                                        <td>
-                                                            ${emperor.Name}
-                                                        </td>
-                                                        <td>
-                                                            ${emperor.Age}
-                                                        </td>
-                                                        <td>
-                                                            ${emperor.Empire}
-                                                        </td>
-                                                        <td>
-                                                            <button id="delete" onclick="showEmperorDeleteModal(${emperor.EmperorId})" class="btn btn-danger btn-sm">Delete</button>
-                                                        </td>
-                                                 </tr>
-                                                `);
+                                                        <tr id=emp${emperor.EmperorId}>
+                                                            <td>
+                                                                ${emperor.Photo}
+                                                            </td>
+                                                            <td>
+                                                                ${emperor.Name}
+                                                            </td>
+                                                            <td>
+                                                                ${emperor.Age}
+                                                            </td>
+                                                            <td>
+                                                                ${emperor.Empire}
+                                                            </td>
+                                                            <td>
+                                                                <button id="info" onclick="ShowEmperorInfoModal(${emperor.EmperorId})" class="btn btn-info btn-sm">Info</button>
+                                                                <button id="edit" onclick="" class="btn btn-primary btn-sm">Edit</button>
+                                                                <button id="delete" onclick="ShowEmperorDeleteModal(${emperor.EmperorId})" class="btn btn-danger btn-sm">Delete</button>
+                                                            </td>
+                                                     </tr>
+                                                    `);
                     });
 
                 }
@@ -478,53 +813,70 @@
 
         });
 
+        function ShowEmperorInfoModal(id) {
+            $.ajax({
+                type: "GET",
+                url: `/api/Emperor/?id=${id}`,
+                data: "",
+                dataType: "json",
+                success: function (response) {
+                    $(document).ready(function() {
+                        $("#ArmadaModal").modal();
+                    });
 
-        function showEmperorDeleteModal(id) {
-            $(document).ready(function () {
-                $("#deleteModal").modal();
-            });
+                    $("#modalBody").html(`<ul>
+                                             <li>  <strong>About:</strong> ${response.Description} </li>
+                                            <ul>`);
 
-            $("#modalfooterbtn").html(
-                            `
-                            <button type="button" onclick="deleteEmperor(${id})" id="ajaxDelete" class="btn btn-danger deletebtn">Delete</button>
-                            <button type="button" class="btn btn-secondary close" data-bs-dismiss="modal">Cancel</button>
-                            `
-            );
+                    $("#modalFooter").html('<button type="button" class="btn btn-secondary close" data-bs-dismiss="modal">Cancel</button>');
 
-            $(".close").click(function () {
-                $("#deleteModal").modal("hide");
+                    $(".close").click(function() {
+                        $("#ArmadaModal").modal("hide");
+                    });
+                }
             });
         }
 
+        function ShowEmperorDeleteModal(id) {
+            $(document).ready(function() {
+                $("#ArmadaModal").modal();
+            });
 
+            $("#modalBody").html("<h6><strong>Are you sure you want to delete this?</strong></h6>");
 
+            $("#modalFooter").html(
+                `
+                                <button type="button" onclick="DeleteEmperor(${id
+                })"class="btn btn-danger deletebtn">Delete</button>
+                                <button type="button" class="btn btn-secondary close" data-bs-dismiss="modal">Cancel</button>
+                                `
+            );
 
-        function deleteEmperor(id) {
+            $(".close").click(function() {
+                $("#ArmadaModal").modal("hide");
+            });
+        }
+
+        function DeleteEmperor(id) {
             $.ajax({
                 type: "DELETE",
                 url: `/api/Emperor/?id=${id}`,
                 data: "",
                 dataType: "json",
-                success: function (response) {
-                    setTimeout(() => $("#alertEmperor").html(`
-                                            <div class="alert alert-dismissible alert-warning">
-                                              <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                                              <h4 class="alert-heading">Successfully deleted</h4>
-                                              <p class="mb-0">${response.Name}</p>
-                                            </div>
-                                        `).fadeOut(4000), 500);
-
-                    
+                success: function(response) {
+                    setTimeout(() => $("#deleteAlert").html(`
+                                                <div class="alert alert-dismissible alert-warning">
+                                                  <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                                                  <h4 class="alert-heading">Successfully deleted</h4>
+                                                  <p class="mb-0">${response.Name}</p>
+                                                </div>
+                                            `).fadeOut(4000),
+                        500);
                 }
             });
-            $("#deleteModal").modal("hide");
+            $("#ArmadaModal").modal("hide");
             $(`#emp${id}`).remove();
         }
-        
-        
-
-
-
 
     </script>
 }

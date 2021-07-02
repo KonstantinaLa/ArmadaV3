@@ -38,9 +38,7 @@ namespace Armada.WebApp.Controllers.WebApi
 
                 })
 
-
             }); 
-
 
             return Ok(planets);
         }
@@ -49,13 +47,11 @@ namespace Armada.WebApp.Controllers.WebApi
         [ResponseType(typeof(Planet))]
         public IHttpActionResult GetPlanet(int id)
         {
-            Planet planet = db.Planets.Find(id);
-            if (planet == null)
-            {
-                return NotFound();
-            }
+            var planet = unitOfWork.Planets.FindById(id);
 
-            return Ok(planet);
+            if (planet == null) return NotFound();
+            
+            return Ok(new{Name = planet.Name,Type = planet.Type.ToString()});
         }
 
         // PUT: api/Planet/5
@@ -110,16 +106,14 @@ namespace Armada.WebApp.Controllers.WebApi
 
         // DELETE: api/Planet/5
         [ResponseType(typeof(Planet))]
-        public IHttpActionResult DeletePlanet(int id)
+        public IHttpActionResult DeletePlanet(int? id)
         {
-            Planet planet = db.Planets.Find(id);
-            if (planet == null)
-            {
-                return NotFound();
-            }
+            var planet = unitOfWork.Planets.FindById(id);
 
-            db.Planets.Remove(planet);
-            db.SaveChanges();
+            if (planet == null) return NotFound();
+
+            unitOfWork.Planets.Delete(planet);
+            unitOfWork.Save();
 
             return Ok(planet);
         }
@@ -128,7 +122,7 @@ namespace Armada.WebApp.Controllers.WebApi
         {
             if (disposing)
             {
-                db.Dispose();
+                unitOfWork.Dispose();
             }
             base.Dispose(disposing);
         }
