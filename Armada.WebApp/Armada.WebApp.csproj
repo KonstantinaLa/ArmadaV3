@@ -401,11 +401,6 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Views\TestAdmirals\Create.cshtml" />
-    <Content Include="Views\TestAdmirals\Delete.cshtml" />
-    <Content Include="Views\TestAdmirals\Details.cshtml" />
-    <Content Include="Views\TestAdmirals\Edit.cshtml" />
-    <Content Include="Views\TestAdmirals\Index.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
