@@ -13,7 +13,7 @@ namespace ArmadaV3.Database.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202106272021034_Initial"; }
+            get { return "202107031914102_Initial"; }
         }
         
         string IMigrationMetadata.Source

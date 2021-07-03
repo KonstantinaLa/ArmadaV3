@@ -85,16 +85,13 @@ namespace Armada.WebApp.Controllers.WebApi
         [ResponseType(typeof(Emperor))]
         public IHttpActionResult PostEmperor(Emperor emperor)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            if (!ModelState.IsValid) return BadRequest(ModelState);
 
-            db.Emperors.Add(emperor);
+            unitOfWork.Emperors.Create(emperor);
 
             try
             {
-                db.SaveChanges();
+                unitOfWork.Save();
             }
             catch (DbUpdateException)
             {
@@ -102,13 +99,10 @@ namespace Armada.WebApp.Controllers.WebApi
                 {
                     return Conflict();
                 }
-                else
-                {
-                    throw;
-                }
             }
 
-            return CreatedAtRoute("DefaultApi", new { id = emperor.EmperorId }, emperor);
+            return CreatedAtRoute("DefaultApi", new {id = emperor.EmperorId}, emperor);
+
         }
 
         // DELETE: api/Emperor/5

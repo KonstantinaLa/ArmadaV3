@@ -30,6 +30,7 @@ namespace Armada.WebApp.Controllers.WebApi
                 Trait = e.Trait,
                 ControlledSystem = e.ControlledSystems,
                 Photo = e.Photo,
+                Emperor = e.Emperor?.EmperorId,
                 Admirals = e.Admirals.Select(a => new
                 {
                     AdmiralId = a.AdmiralId,
@@ -37,11 +38,11 @@ namespace Armada.WebApp.Controllers.WebApi
                     Species = a.Species.ToString()
                 })
 
-            }) ; 
+            });
 
             return Ok(empires);
         }
-
+      
         // GET: api/Empire/5
         [ResponseType(typeof(Empire))]
         public IHttpActionResult GetEmpire(int? id)
@@ -50,7 +51,7 @@ namespace Armada.WebApp.Controllers.WebApi
 
             if (empire == null) return NotFound();
 
-            return Ok(new{Emperor = empire.Emperor?.Name , Description = empire.Description});
+            return Ok(new { Emperor = empire.Emperor?.Name, Description = empire.Description });
         }
 
         // PUT: api/Empire/5

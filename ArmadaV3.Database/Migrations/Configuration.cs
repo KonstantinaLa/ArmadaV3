@@ -19,7 +19,7 @@
         protected override void Seed(ArmadaV3.Database.ApplicationDbContext context)
         {
             #region Seed Users
-            if (!context.Roles.Any(x=>x.Name == "Admin"))
+            if (!context.Roles.Any(x => x.Name == "Admin"))
             {
                 var store = new RoleStore<IdentityRole>(context);
                 var manager = new RoleManager<IdentityRole>(store);
@@ -28,7 +28,7 @@
                 manager.Create(role);
             }
 
-            if (!context.Roles.Any(x=>x.Name == "Emperor"))
+            if (!context.Roles.Any(x => x.Name == "Emperor"))
             {
                 var store = new RoleStore<IdentityRole>(context);
                 var manager = new RoleManager<IdentityRole>(store);
@@ -52,7 +52,7 @@
                 manager.Create(user);
                 manager.AddToRole(user.Id, "Admin");
             }
-           
+
             if (!context.Users.Any(x => x.UserName == "emperor@armada.net"))
             {
                 var store = new UserStore<ApplicationUser>(context);
@@ -76,35 +76,71 @@
                 Name = "United Nations of Earth",
                 Trait = "Constitutional Dictatorship",
                 ControlledSystems = 245,
-                Description = "The myriad Human nations that constitute their interstellar government are disparate, yet united in purpose."
+                Description = "The myriad Human nations that constitute their interstellar government are disparate, yet united in purpose.",
+                Emperor = new Emperor
+                {
+                    Name = "Alexander Romanov",
+                    Age = 54,
+                    Description = "Scion of the old Tsarist royal family, came to power after centuries of obscurity.",
+                    Species = EmperorSpecies.Human,
+                }
+
             };
             var e2 = new Empire
             {
                 Name = "Imperium of Man",
                 Trait = "Martial Empire",
                 ControlledSystems = 889,
-                Description = "Humans determined to realize humanity's manifest destiny - dominion over the galaxy at any cost."
+                Description = "Humans determined to realize humanity's manifest destiny - dominion over the galaxy at any cost.",
+                Emperor  = new Emperor
+                {
+                    Name = "Euron Greyiron",
+                    Age = 87,
+                    Description = "Pirate origins, seized power in a coup d'etat.",
+                    Species = EmperorSpecies.Blorg,
+                }
             };
             var e3 = new Empire
             {
                 Name = "Divine League",
                 Trait = "Imperial Cult",
                 ControlledSystems = 446,
-                Description = "Highly spiritual and place great importance on religion, venerating their high kings as living gods."
+                Description = "Highly spiritual and place great importance on religion, venerating their high kings as living gods.",
+                Emperor = new Emperor
+                {
+                    Name = "Sheogorath the Mad",
+                    Age = 467,
+                    Description = "Double personality and known to have deadly fits of rage, feared by all.",
+                    Species = EmperorSpecies.Lok,
+                }
             };
             var e4 = new Empire
             {
                 Name = "Daedric Legion",
                 Trait = "Theocratic Monarchy",
                 ControlledSystems = 756,
-                Description = "Using a mixture of spiritual doctrine and careful organization, a globally united society."
+                Description = "Using a mixture of spiritual doctrine and careful organization, a globally united society.",
+                Emperor = new Emperor
+                {
+                    Name = "Caelar Argent",
+                    Age = 32,
+                    Description = "Righteous crusader, labored under the high expectations that came with her semi-divine heritage.",
+                    Species = EmperorSpecies.Vheln,
+                }
             };
             var e5 = new Empire
             {
                 Name = "Argent Crusade",
                 Trait = "Illuminated Autocracy",
                 ControlledSystems = 68,
-                Description = "Having conquered the planet that once threatened to blast them out of existence the Crusade now have their sights firmly set on the stars."
+                Description = "Having conquered the planet that once threatened to blast them out of existence the Crusade now have their sights firmly set on the stars.",
+                Emperor = new Emperor
+                {
+                    Name = "Sovereign",
+                    Age = 1868,
+                    Description = "The eternal leader of the Reapers, leading them with a single directive.",
+                    Species = EmperorSpecies.Scyldari,
+                }
             };
             var e6 = new Empire
             {
@@ -159,7 +195,7 @@
                 Specialty = AdmiralSpecialty.Propulsion,
                 Species = EmperorSpecies.Human,
                 Description = "Description",
-                
+
                 Empire = e1,
                 EmpireId = e1.EmpireId
             };
@@ -171,7 +207,7 @@
                 Specialty = AdmiralSpecialty.MilitaryTheory,
                 Species = EmperorSpecies.Human,
                 Description = "Description",
-                
+
                 Empire = e1,
                 EmpireId = e1.EmpireId
             };
@@ -183,7 +219,7 @@
                 Specialty = AdmiralSpecialty.Psionics,
                 Species = EmperorSpecies.Human,
                 Description = "Description",
-                
+
                 Empire = e1,
                 EmpireId = e1.EmpireId
             };
@@ -195,7 +231,7 @@
                 Specialty = AdmiralSpecialty.Propulsion,
                 Species = EmperorSpecies.Human,
                 Description = "Description",
-                
+
                 Empire = e1,
                 EmpireId = e1.EmpireId
             };
@@ -207,7 +243,7 @@
                 Specialty = AdmiralSpecialty.Scout,
                 Species = EmperorSpecies.Human,
                 Description = "Description",
-                
+
                 Empire = e1,
                 EmpireId = e1.EmpireId
             };
@@ -219,7 +255,7 @@
                 Specialty = AdmiralSpecialty.VoidHunter,
                 Species = EmperorSpecies.Human,
                 Description = "Description",
-                
+
                 Empire = e2,
                 EmpireId = e2.EmpireId
             };
@@ -231,7 +267,7 @@
                 Specialty = AdmiralSpecialty.Computing,
                 Species = EmperorSpecies.Human,
                 Description = "Description",
-                
+
                 Empire = e2,
                 EmpireId = e2.EmpireId
             };
@@ -243,7 +279,7 @@
                 Specialty = AdmiralSpecialty.ArmyLogistics,
                 Species = EmperorSpecies.Human,
                 Description = "Description",
-                
+
                 Empire = e2,
                 EmpireId = e2.EmpireId
             };
@@ -255,7 +291,7 @@
                 Specialty = AdmiralSpecialty.Propulsion,
                 Species = EmperorSpecies.Human,
                 Description = "Description",
-                
+
                 Empire = e2,
                 EmpireId = e2.EmpireId
             };
@@ -267,7 +303,7 @@
                 Specialty = AdmiralSpecialty.Psionics,
                 Species = EmperorSpecies.Human,
                 Description = "Description",
-                
+
                 Empire = e2,
                 EmpireId = e2.EmpireId
             };
@@ -279,7 +315,7 @@
                 Specialty = AdmiralSpecialty.Propulsion,
                 Species = EmperorSpecies.Mantis,
                 Description = "Description",
-                
+
                 Empire = e3,
                 EmpireId = e3.EmpireId
             };
@@ -291,7 +327,7 @@
                 Specialty = AdmiralSpecialty.Scout,
                 Species = EmperorSpecies.Engi,
                 Description = "Description",
-                
+
                 Empire = e3,
                 EmpireId = e3.EmpireId
             };
@@ -303,7 +339,7 @@
                 Specialty = AdmiralSpecialty.Propulsion,
                 Species = EmperorSpecies.Blorg,
                 Description = "Description",
-                
+
                 Empire = e3,
                 EmpireId = e3.EmpireId
             };
@@ -315,7 +351,7 @@
                 Specialty = AdmiralSpecialty.ArmyLogistics,
                 Species = EmperorSpecies.Vheln,
                 Description = "Description",
-                
+
                 Empire = e3,
                 EmpireId = e3.EmpireId
             };
@@ -328,7 +364,7 @@
                 Species = EmperorSpecies.Zoltan,
 
                 Description = "Description",
-                
+
                 Empire = e4,
                 EmpireId = e4.EmpireId
             };
@@ -340,7 +376,7 @@
                 Specialty = AdmiralSpecialty.Propulsion,
                 Species = EmperorSpecies.Scyldari,
                 Description = "Description",
-                
+
                 Empire = e4,
                 EmpireId = e4.EmpireId
             };
@@ -352,7 +388,7 @@
                 Specialty = AdmiralSpecialty.ArmyLogistics,
                 Species = EmperorSpecies.Scyldari,
                 Description = "Description",
-                
+
                 Empire = e4,
                 EmpireId = e4.EmpireId
             };
@@ -364,7 +400,7 @@
                 Specialty = AdmiralSpecialty.MilitaryTheory,
                 Species = EmperorSpecies.Scyldari,
                 Description = "Description",
-                
+
                 Empire = e4,
                 EmpireId = e4.EmpireId
             };
@@ -376,7 +412,7 @@
                 Specialty = AdmiralSpecialty.Psionics,
                 Species = EmperorSpecies.Engi,
                 Description = "Description",
-                
+
                 Empire = e5,
                 EmpireId = e5.EmpireId
             };
@@ -388,7 +424,7 @@
                 Specialty = AdmiralSpecialty.Scout,
                 Species = EmperorSpecies.Gecko,
                 Description = "Description",
-                
+
                 Empire = e5,
                 EmpireId = e5.EmpireId
             };
@@ -400,7 +436,7 @@
                 Specialty = AdmiralSpecialty.Computing,
                 Species = EmperorSpecies.Orbis,
                 Description = "Description",
-                
+
                 Empire = e5,
                 EmpireId = e5.EmpireId
             };
@@ -412,7 +448,7 @@
                 Specialty = AdmiralSpecialty.VoidHunter,
                 Species = EmperorSpecies.Blorg,
                 Description = "Description",
-                
+
                 Empire = e5,
                 EmpireId = e5.EmpireId
             };
@@ -424,7 +460,7 @@
                 Specialty = AdmiralSpecialty.Computing,
                 Species = EmperorSpecies.Blorg,
                 Description = "Description",
-                
+
                 Empire = e5,
                 EmpireId = e5.EmpireId
             };
@@ -436,7 +472,7 @@
                 Specialty = AdmiralSpecialty.Computing,
                 Species = EmperorSpecies.Engi,
                 Description = "Description",
-                
+
                 Empire = e6,
                 EmpireId = e6.EmpireId
             };
@@ -448,7 +484,7 @@
                 Specialty = AdmiralSpecialty.ArmyLogistics,
                 Species = EmperorSpecies.Lok,
                 Description = "Description",
-                
+
                 Empire = e6,
                 EmpireId = e6.EmpireId
             };
@@ -460,7 +496,7 @@
                 Specialty = AdmiralSpecialty.Psionics,
                 Species = EmperorSpecies.Pasharti,
                 Description = "Description",
-                
+
                 Empire = e6,
                 EmpireId = e6.EmpireId
             };
@@ -472,7 +508,7 @@
                 Specialty = AdmiralSpecialty.VoidHunter,
                 Species = EmperorSpecies.Scyldari,
                 Description = "Description",
-                
+
                 Empire = e6,
                 EmpireId = e6.EmpireId
             };
@@ -484,7 +520,7 @@
                 Specialty = AdmiralSpecialty.Computing,
                 Species = EmperorSpecies.Blorg,
                 Description = "Description",
-                
+
                 Empire = e7,
                 EmpireId = e7.EmpireId
             };
@@ -496,7 +532,7 @@
                 Specialty = AdmiralSpecialty.ArmyLogistics,
                 Species = EmperorSpecies.Gecko,
                 Description = "Description",
-                
+
                 Empire = e7,
                 EmpireId = e7.EmpireId
             };
@@ -508,7 +544,7 @@
                 Specialty = AdmiralSpecialty.Propulsion,
                 Species = EmperorSpecies.Pasharti,
                 Description = "Description",
-                
+
                 Empire = e7,
                 EmpireId = e7.EmpireId
             };
@@ -520,7 +556,7 @@
                 Specialty = AdmiralSpecialty.ArmyLogistics,
                 Species = EmperorSpecies.Mantis,
                 Description = "Description",
-                
+
                 Empire = e8,
                 EmpireId = e8.EmpireId
             };
@@ -532,7 +568,7 @@
                 Specialty = AdmiralSpecialty.MilitaryTheory,
                 Species = EmperorSpecies.Engi,
                 Description = "Description",
-                
+
                 Empire = e8,
                 EmpireId = e8.EmpireId
             };
@@ -544,7 +580,7 @@
                 Specialty = AdmiralSpecialty.MilitaryTheory,
                 Species = EmperorSpecies.Vheln,
                 Description = "Description",
-                
+
                 Empire = e8,
                 EmpireId = e8.EmpireId
             };
@@ -556,7 +592,7 @@
                 Specialty = AdmiralSpecialty.MilitaryTheory,
                 Species = EmperorSpecies.Lok,
                 Description = "Description",
-                
+
                 Empire = e8,
                 EmpireId = e8.EmpireId
             };
@@ -568,7 +604,7 @@
                 Specialty = AdmiralSpecialty.Computing,
                 Species = EmperorSpecies.Zoltan,
                 Description = "Description",
-                
+
                 Empire = e8,
                 EmpireId = e8.EmpireId
             };
@@ -580,7 +616,7 @@
                 Specialty = AdmiralSpecialty.MilitaryTheory,
                 Species = EmperorSpecies.Zoltan,
                 Description = "Description",
-                
+
                 Empire = e8,
                 EmpireId = e8.EmpireId
             };
@@ -592,7 +628,7 @@
                 Specialty = (AdmiralSpecialty)5,
                 Species = EmperorSpecies.Zoltan,
                 Description = "Description",
-                
+
                 Empire = e8,
                 EmpireId = e8.EmpireId
             };
@@ -614,7 +650,7 @@
 
             #region Seed Crew
 
-            var c1 = new Crew { Number = 14, Specialty = "Engineers", Admiral =a1 } ;
+            var c1 = new Crew { Number = 14, Specialty = "Engineers", Admiral = a1 };
             var c2 = new Crew { Number = 15, Specialty = "Developers", Admiral = a2 };
             var c3 = new Crew { Number = 27, Specialty = "Radiation Techs", Admiral = a3 };
             var c4 = new Crew { Number = 22, Specialty = "Scientists", Admiral = a4 };
@@ -658,57 +694,6 @@
             foreach (var crew in crews)
             {
                 context.Crews.AddOrUpdate(c => new { c.Number, c.Specialty }, crew);
-            }
-            #endregion
-
-            #region Seed Emperors
-
-            var emperor1 = new Emperor
-            {
-                Name = "Alexander Romanov",
-                Age = 54,
-                Description = "Scion of the old Tsarist royal family, came to power after centuries of obscurity.",
-                Species = EmperorSpecies.Human,
-                Empire = e1
-            };
-            var emperor2 = new Emperor
-            {
-                Name = "Euron Greyiron",
-                Age = 87,
-                Description = "Pirate origins, seized power in a coup d'etat.",
-                Species = EmperorSpecies.Blorg,
-                Empire = e3
-            };
-            var emperor3 = new Emperor
-            {
-                Name = "Sheogorath the Mad",
-                Age = 467,
-                Description = "Double personality and known to have deadly fits of rage, feared by all.",
-                Species = EmperorSpecies.Lok,
-                Empire = e4
-            };
-            var emperor4 = new Emperor
-            {
-                Name = "Caelar Argent",
-                Age = 32,
-                Description = "Righteous crusader, labored under the high expectations that came with her semi-divine heritage.",
-                Species = EmperorSpecies.Vheln,
-                Empire = e5
-            };
-            var emperor5 = new Emperor
-            {
-                Name = "Sovereign",
-                Age = 1868,
-                Description = "The eternal leader of the Reapers, leading them with a single directive.",
-                Species = EmperorSpecies.Scyldari,
-                Empire = e8
-            };
-
-            var emperors = new List<Emperor> { emperor1, emperor2, emperor3, emperor4, emperor5 };
-
-            foreach (var emperor in emperors)
-            {
-                context.Emperors.AddOrUpdate(e => new { e.Name }, emperor);
             }
             #endregion
 
@@ -874,8 +859,6 @@
                 context.AdmiralMissions.AddOrUpdate(aM => aM.UniqueNumberForSeed, admiralMission);
             }
             #endregion
-
-
 
             context.SaveChanges();
         }
