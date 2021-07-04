@@ -29,6 +29,7 @@ namespace Armada.WebApp.Controllers.WebApi
                 Name = e.Name,
                 Age = e.Age,
                 Photo = e.Photo,
+                Species = e.Species,
                 Empire = e.Empire.Name
             });
 
@@ -43,7 +44,8 @@ namespace Armada.WebApp.Controllers.WebApi
 
             if (emperor == null) return NotFound();
 
-            return Ok(new{Description = emperor.Description});
+            return Ok(new{EmperorId = emperor.EmperorId,Name = emperor.Name,Age = emperor.Age,Photo = emperor.Photo,EmpireId = emperor.Empire.EmpireId,
+                EmpireName=emperor.Empire.Name , Species = emperor.Species.ToString(), Description = emperor.Description});
         }
 
         // PUT: api/Emperor/5
