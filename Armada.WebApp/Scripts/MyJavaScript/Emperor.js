@@ -4,22 +4,23 @@
 //Table Creation Section
 function CreateEmperorTableHead() {
     $("#TabContent").html(`
-                                             <h2 class="m-4 text-center">Emperors</h2>
-                                            <table class="table table-hover table-bordered">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Photo</th>
-                                                        <th>Name</th>
-                                                        <th>Age</th>
-                                                        <th>Empire</th>
-                                                        <th>Actions</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody id="emperorsBody">
-                                            </tbody>
-                                         </table>
-                                      <button id="create" onclick="ShowEmperorCreateModal()" class="btn btn-primary m-1">Create New</button>
-                                        `);
+                              <h2 class="m-4 text-center">Emperors</h2>
+                             <table id="emperorTable" class="table table-hover table-bordered">
+                                 <thead>
+                                     <tr>
+                                         <th>Photo</th>
+                                         <th>Name</th>
+                                         <th>Age</th>
+                                         <th>Species</th>
+                                         <th>Empire</th>
+                                         <th>Actions</th>
+                                     </tr>
+                                 </thead>
+                                 <tbody id="emperorsBody">
+                                  </tbody>
+                               </table>
+                            <button id="create" onclick="ShowEmperorCreateModal()" class="btn btn-primary m-1">Create New</button>
+                              `);
 }
 
 function CreateEmperorFullTable() {
@@ -42,6 +43,9 @@ function CreateEmperorFullTable() {
                                                   </td>
                                                   <td>
                                                       ${emperor.Age}
+                                                  </td>
+                                                   <td>
+                                                      ${emperor.Species}
                                                   </td>
                                                   <td>
                                                       ${emperor.Empire}
@@ -66,8 +70,9 @@ function ShowEmperorCreateModal() {
     $(document).ready(function () {
         $("#ArmadaModal").modal();
     });
-    EmperorEmpiresTemplate();
 
+    EmperorEmpiresTemplate();
+    EmperorSpeciesTemplate();
     EmperorCreateModalBody();
 
     $("#modalFooter")
@@ -80,11 +85,9 @@ function ShowEmperorCreateModal() {
     $("#empCreateForm").submit((e) => e.preventDefault());
 
     CreateEmperor();
-
+   
     $("#empCreateForm").submit(() => $("#ArmadaModal").modal("hide"));
-
-    $("#empCreateForm").submit(() => CreateEmperorFullTable());
-
+   
 }
 
 function EmperorCreateModalBody() {
@@ -112,7 +115,7 @@ function EmperorCreateModalBody() {
                                                </div>
                                                <div class="form-group">
                                                    <label for="SpeciesSelect" class="form-label mt-4">Species</label>
-                                                   <select class="form-select" id="SpeciesSelect">
+                                                   <select class="form-select" required id="SpeciesSelect">
                                                     
                                                    </select>
                                                </div>
@@ -150,6 +153,27 @@ function EmperorEmpiresTemplate() {
 
 }
 
+function EmperorSpeciesTemplate() {
+    $.ajax({
+        type: "GET",
+        url: "/api/Emperor",
+        data: "",
+        dataType: "json",
+        success: function (response) {
+            let availableSpecies;
+            response.forEach(function(emperor) {
+                 availableSpecies = emperor.AllSpecies;
+            });
+            
+            availableSpecies.forEach(function (species) {
+                $("#SpeciesSelect").append(`
+                                                       <option>${species.toString()}</option>
+                                               `);
+            });
+        }
+    });
+
+}
 
 function CreateEmperor() {
 
@@ -159,10 +183,11 @@ function CreateEmperor() {
             "Name": $("#Name").val(),
             "Age": $("#Age").val(),
             "Description": $("#About").val(),
+            "Species": $("#SpeciesSelect").val(),
             "Photo": null,
 
         };
-
+        
         $.ajax({
             type: "POST",
             url: "/api/Emperor",
@@ -176,9 +201,11 @@ function CreateEmperor() {
                                        </div>
                                               `);
                 setTimeout(() => $("#successAlert").html('').fadeOut(4000), 4000);
+                $("#emperorTable").html(' ');
+                CreateEmperorFullTable();
             }
         });
-    });
+    }); 
 }
 
 //Edit Emperor Section
@@ -206,7 +233,7 @@ function ShowEmperorEditModal(id) {
 
     $("#empEditForm").submit(() => $("#ArmadaModal").modal("hide"));
 
-    $("#empEditForm").submit(() => CreateEmperorFullTable());
+  
 
 }
 
@@ -268,9 +295,9 @@ function EmperorEditModalBody(id) {
 
 function EditEmperor(id) {
     
-    $("#empEditForm").submit(() => {
+    $("#empEditForm").submit((e) => {
 
-        console.log("sa");
+        e.preventDefault();
         var emperor = {
             "EmperorId": $("#EmpireSelect").children(":selected").attr("id"),
             "Name": $("#Name").val(),

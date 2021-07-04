@@ -1,10 +1,9 @@
-﻿using System.Data.Entity;
+﻿using System.Collections.Generic;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Web.Http;
 using System.Web.Http.Description;
-using ArmadaV3.Database;
 using ArmadaV3.Entities;
 using ArmadaV3.RepositoryService;
 
@@ -12,7 +11,6 @@ namespace Armada.WebApp.Controllers.WebApi
 {
     public class EmperorController : ApiController
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
         private readonly IUnitOfWork unitOfWork;
 
         public EmperorController()
@@ -30,6 +28,9 @@ namespace Armada.WebApp.Controllers.WebApi
                 Age = e.Age,
                 Photo = e.Photo,
                 Species = e.Species.ToString(),
+                AllSpecies =new List<string> {EmperorSpecies.Blorg.ToString() , EmperorSpecies.Vheln.ToString(), EmperorSpecies.Human.ToString() , EmperorSpecies.Lok.ToString() ,
+                EmperorSpecies.Orbis.ToString(),EmperorSpecies.Pasharti.ToString(),EmperorSpecies.Scyldari.ToString(),EmperorSpecies.Zoltan.ToString(),EmperorSpecies.Engi.ToString(),
+                EmperorSpecies.Gecko.ToString() , EmperorSpecies.Mantis.ToString()},
                 Empire = e.Empire.Name
             });
 
@@ -65,14 +66,10 @@ namespace Armada.WebApp.Controllers.WebApi
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!EmperorExists(id))
-                {
+                if (!unitOfWork.Emperors.Exists(id))
                     return NotFound();
-                }
                 else
-                {
                     throw;
-                }
             }
 
             return StatusCode(HttpStatusCode.NoContent);
@@ -92,14 +89,11 @@ namespace Armada.WebApp.Controllers.WebApi
             }
             catch (DbUpdateException)
             {
-                if (EmperorExists(emperor.EmperorId))
-                {
+                if (unitOfWork.Emperors.Exists(emperor.EmperorId))
                     return Conflict();
-                }
             }
 
-            return CreatedAtRoute("DefaultApi", new {id = emperor.EmperorId}, emperor);
-
+            return CreatedAtRoute("DefaultApi", new {id = emperor.EmperorId },emperor);
         }
 
         // DELETE: api/Emperor/5
@@ -118,16 +112,8 @@ namespace Armada.WebApp.Controllers.WebApi
 
         protected override void Dispose(bool disposing)
         {
-            if (disposing)
-            {
-                unitOfWork.Dispose();
-            }
+            if (disposing) unitOfWork.Dispose();
             base.Dispose(disposing);
-        }
-
-        private bool EmperorExists(int id)
-        {
-            return db.Emperors.Count(e => e.EmperorId == id) > 0;
         }
     }
 }

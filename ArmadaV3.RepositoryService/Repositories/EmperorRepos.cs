@@ -1,4 +1,5 @@
-﻿using ArmadaV3.Database;
+﻿using System.Linq;
+using ArmadaV3.Database;
 using ArmadaV3.Entities;
 
 namespace ArmadaV3.RepositoryService.Repositories
@@ -15,5 +16,9 @@ namespace ArmadaV3.RepositoryService.Repositories
 
         }
 
+        public bool Exists(int id)
+        {
+            return DbContext.Emperors.Count(e => e.EmperorId == id) > 0;
+        }
     }
 }
