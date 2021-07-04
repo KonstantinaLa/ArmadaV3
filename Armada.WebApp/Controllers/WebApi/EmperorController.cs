@@ -23,17 +23,17 @@ namespace Armada.WebApp.Controllers.WebApi
         // GET: api/Emperor
         public IHttpActionResult GetEmperors()
         {
-            var emperor = unitOfWork.Emperors.Get().Select(e => new
+            var emperors = unitOfWork.Emperors.Get().Select(e => new
             {
                 EmperorId = e.EmperorId,
                 Name = e.Name,
                 Age = e.Age,
                 Photo = e.Photo,
-                Species = e.Species,
+                Species = e.Species.ToString(),
                 Empire = e.Empire.Name
             });
 
-            return Ok(emperor);
+            return Ok(emperors);
         }
 
         // GET: api/Emperor/5
@@ -52,21 +52,16 @@ namespace Armada.WebApp.Controllers.WebApi
         [ResponseType(typeof(void))]
         public IHttpActionResult PutEmperor(int id, Emperor emperor)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+            
+            if (id != emperor.EmperorId) return BadRequest();
+            
 
-            if (id != emperor.EmperorId)
-            {
-                return BadRequest();
-            }
-
-            db.Entry(emperor).State = EntityState.Modified;
+            unitOfWork.Emperors.Edit(emperor);
 
             try
             {
-                db.SaveChanges();
+                unitOfWork.Save();
             }
             catch (DbUpdateConcurrencyException)
             {
