@@ -23,6 +23,7 @@ function CreateEmperorTableHead() {
 }
 
 function CreateEmperorFullTable() {
+
     $.ajax({
         type: "GET",
         url: "/api/Emperor",
@@ -32,26 +33,26 @@ function CreateEmperorFullTable() {
             CreateEmperorTableHead();
             response.forEach(function (emperor) {
                 $("#emperorsBody").append(`
-                                                                <tr id=emp${emperor.EmperorId}>
-                                                                    <td>
-                                                                        ${emperor.Photo}
-                                                                    </td>
-                                                                    <td>
-                                                                        ${emperor.Name}
-                                                                    </td>
-                                                                    <td>
-                                                                        ${emperor.Age}
-                                                                    </td>
-                                                                    <td>
-                                                                        ${emperor.Empire}
-                                                                    </td>
-                                                                    <td>
-                                                                        <button id="info" onclick="ShowEmperorInfoModal(${emperor.EmperorId})" class="btn btn-info btn-sm">Info</button>
-                                                                        <button id="edit" onclick="ShowEmperorEditModal(${emperor.EmperorId})" class="btn btn-primary btn-sm">Edit</button>
-                                                                        <button id="delete" onclick="ShowEmperorDeleteModal(${emperor.EmperorId})" class="btn btn-danger btn-sm">Delete</button>
-                                                                    </td>
-                                                             </tr>
-                                                            `);
+                                              <tr id=emp${emperor.EmperorId}>
+                                                  <td>
+                                                      ${emperor.Photo}
+                                                  </td>
+                                                  <td>
+                                                      ${emperor.Name}
+                                                  </td>
+                                                  <td>
+                                                      ${emperor.Age}
+                                                  </td>
+                                                  <td>
+                                                      ${emperor.Empire}
+                                                  </td>
+                                                  <td>
+                                                      <button id="info" onclick="ShowEmperorInfoModal(${emperor.EmperorId})" class="btn btn-info btn-sm">Info</button>
+                                                      <button id="edit" onclick="ShowEmperorEditModal(${emperor.EmperorId})" class="btn btn-primary btn-sm">Edit</button>
+                                                      <button id="delete" onclick="ShowEmperorDeleteModal(${emperor.EmperorId})" class="btn btn-danger btn-sm">Delete</button>
+                                                  </td>
+                                           </tr>
+                                          `);
             });
 
         }
@@ -149,6 +150,7 @@ function EmperorEmpiresTemplate() {
 
 }
 
+
 function CreateEmperor() {
 
     $("#empCreateForm").submit(() => {
@@ -207,6 +209,60 @@ function ShowEmperorEditModal(id) {
 
 }
 
+function EmperorEditModalBody(id) {
+    $.ajax({
+        type: "GET",
+        url: `/api/Emperor/?id=${id}`,
+        data: "",
+        dataType: "json",
+        success: function (response) {
+            $("#modalBody").html(`
+                                    <div class="col-md-8 mx-auto text-center">
+                                         <form id="empEditForm">
+                                           <fieldset>
+                                               <legend>Edit Emperor</legend>
+
+                                               <div class="form-group">
+                                                   <label class="col-form-label mt-4" for="Name">Name</label>
+                                                   <input type="text" class="form-control" placeholder="Name" id="Name" value=${response.Name} autocomplete="off" required minlength="2" >
+                                               </div>
+
+                                               <div class="form-group">
+                                                   <label class="col-form-label mt-4" for="Age">Age</label>
+                                                   <input type="number" class="form-control" placeholder="Age" id="Age" value=${response.Age} autocomplete="off" required min ="18">
+                                               </div>
+
+                                               <div class="form-group">
+                                                   <label for="SpeciesSelect" class="form-label mt-4">Species</label>
+                                                   <select class="form-select" id="SpeciesSelect">
+                                                    <option id=${response.Species}>${response.Species}</option>
+                                                   </select>
+                                               </div>
+
+                                               <div class="form-group">
+                                                   <label for="EmpireSelect" class="form-label mt-4">Empire</label>
+                                                   <select class="form-select" id="EmpireSelect">
+                                                    <option id=${response.EmpireId}>${response.EmpireName}</option>
+                                                   </select>
+                                               </div>
+                                               <div class="form-group">
+                                                   <label for="About" class="form-label mt-4">About</label>
+                                                   <textarea class="form-control" id="About" rows="3"  required minlength="10">${response.Description}</textarea>
+                                               </div>
+                                               <div class="form-group">
+                                                   <label for="formFile" class="form-label mt-4">Photo</label>
+                                                   <input class="form-control" type="file" id="formFile">
+                                               </div>
+                                                  <input type="submit" class="btn btn-primary mt-3  value="Register"/>
+                                              </fieldset>
+                                         </form>
+                                      </div>
+                                  `);
+        }
+    });
+
+
+}
 
 
 function EditEmperor(id) {
@@ -302,8 +358,7 @@ function DeleteEmperor(id) {
                                                           <h4 class="alert-heading">Successfully deleted</h4>
                                                           <p class="mb-0">${response.Name}</p>
                                                         </div>
-                                                    `).fadeOut(4000),
-                500);
+                                                    `).fadeOut(4000),500);
         }
     });
 
