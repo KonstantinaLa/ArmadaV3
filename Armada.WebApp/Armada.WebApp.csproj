@@ -286,6 +286,12 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\MyJavaScript\Admiral.js" />
+    <Content Include="Scripts\MyJavaScript\Crew.js" />
+    <Content Include="Scripts\MyJavaScript\Emperor.js" />
+    <Content Include="Scripts\MyJavaScript\Empire.js" />
+    <Content Include="Scripts\MyJavaScript\Mission.js" />
+    <Content Include="Scripts\MyJavaScript\Planet.js" />
     <Content Include="Scripts\popper-utils.js" />
     <Content Include="Scripts\popper-utils.min.js" />
     <Content Include="Scripts\popper.js" />
