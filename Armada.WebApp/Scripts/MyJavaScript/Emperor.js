@@ -184,6 +184,7 @@ function CreateEmperor() {
 //Edit Emperor Section
 
 function ShowEmperorEditModal(id) {
+
     $(document).ready(function () {
         $("#ArmadaModal").modal();
     });
@@ -199,13 +200,13 @@ function ShowEmperorEditModal(id) {
         $("#ArmadaModal").modal("hide");
     });
 
-    $("#empForm").submit((e) => e.preventDefault());
+    $("#empEditForm").submit((e) => e.preventDefault());
 
     EditEmperor(id);
 
-    $("#empForm").submit(() => $("#ArmadaModal").modal("hide"));
+    $("#empEditForm").submit(() => $("#ArmadaModal").modal("hide"));
 
-    $("#empForm").submit(() => CreateEmperorFullTable());
+    $("#empEditForm").submit(() => CreateEmperorFullTable());
 
 }
 
@@ -224,7 +225,7 @@ function EmperorEditModalBody(id) {
 
                                                <div class="form-group">
                                                    <label class="col-form-label mt-4" for="Name">Name</label>
-                                                   <input type="text" class="form-control" placeholder="Name" id="Name" value=${response.Name} autocomplete="off" required minlength="2" >
+                                                   <textarea  class="form-control" placeholder="Name" id="Name" row="0" autocomplete="off" required minlength="2" >${response.Name}</textarea>
                                                </div>
 
                                                <div class="form-group">
@@ -253,29 +254,32 @@ function EmperorEditModalBody(id) {
                                                    <label for="formFile" class="form-label mt-4">Photo</label>
                                                    <input class="form-control" type="file" id="formFile">
                                                </div>
-                                                  <input type="submit" class="btn btn-primary mt-3  value="Register"/>
+                                                  <input type="submit" id="editEmperorSubbtn" class="btn btn-primary mt-3"  value="Save Changes"/>
                                               </fieldset>
                                          </form>
                                       </div>
                                   `);
         }
-    });
 
+    });
 
 }
 
 
 function EditEmperor(id) {
+    
+    $("#empEditForm").submit(() => {
 
-    $("#empForm").submit(() => {
+        console.log("sa");
         var emperor = {
             "EmperorId": $("#EmpireSelect").children(":selected").attr("id"),
             "Name": $("#Name").val(),
             "Age": $("#Age").val(),
             "Description": $("#About").val(),
-            "Photo": null,
-
+            "Photo": null
         };
+
+        console.log(emperor);
 
         $.ajax({
             type: "PUT",
