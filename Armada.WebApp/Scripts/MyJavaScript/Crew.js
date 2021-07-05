@@ -54,7 +54,7 @@ function CreateCrewFullTable() {
         }
     });
 }
-$("#crewTablebtn").click(CreateCrewFullTable());
+$("#crewTablebtn").click(CreateCrewFullTable);
 
 
 //Create Crew Section

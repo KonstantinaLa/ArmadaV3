@@ -19,7 +19,7 @@ function CreateEmperorTableHead() {
                                  <tbody id="emperorsBody">
                                   </tbody>
                                </table>
-                            <button id="create" onclick="ShowEmperorCreateModal()" class="btn btn-primary m-1">Create New</button>
+                            <button id="create" onclick="ShowEmperorCreateModal" class="btn btn-primary m-1">Create New</button>
                               `);
 }
 
@@ -63,7 +63,7 @@ function CreateEmperorFullTable() {
     });
 }
 
-$("#emperorTablebtn").click(CreateEmperorFullTable());
+$("#emperorTablebtn").click(CreateEmperorFullTable);
 
 //Create Emperor Section
 function ShowEmperorCreateModal() {

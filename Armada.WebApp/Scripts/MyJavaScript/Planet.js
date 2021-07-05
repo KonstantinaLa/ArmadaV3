@@ -17,7 +17,7 @@ function CreatePlanetTableHead() {
                                                 <tbody id="planetsBody">
                                             </tbody>
                                          </table>
-                                       <button id="create" onclick="ShowPlanetCreateModal()" class="btn btn-primary m-1">Create New</button>
+                                       <button id="create" onclick="ShowPlanetCreateModal" class="btn btn-primary m-1">Create New</button>
                                         `);
 }
 
@@ -57,7 +57,7 @@ function CreatePlanetFullTable() {
     });
 }
 
-$("#planetTablebtn").click(CreatePlanetFullTable());
+$("#planetTablebtn").click(CreatePlanetFullTable);
 
 
 //Create Planet Section
