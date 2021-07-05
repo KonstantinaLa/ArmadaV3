@@ -315,12 +315,14 @@ function EditEmperor(id) {
             dataType: "json",
             success: function (response) {
                 $("#successAlert").html(`
-                                       <div class="alert alert-dismissible alert-success">
+                                       <div class="alert alert-dismissible msg alert-success">
                                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                                            <strong>Well done!</strong> You successfully Edited  ${response.Name} !!
                                        </div>
                                               `);
-                setTimeout(() => $("#successAlert").html('').fadeOut(4000), 4000);
+
+                /*setTimeout(() => $("#successAlert").html('').fadeOut(4000), 4000);*/
+                setTimeout(() => ($(".msg").fadeOut(800)), 2000);
             }
         });
     });
@@ -365,8 +367,7 @@ function ShowEmperorDeleteModal(id) {
 
     $("#modalFooter").html(
         `
-                                        <button type="button" onclick="DeleteEmperor(${id
-        })"class="btn btn-danger deletebtn">Delete</button>
+                                        <button type="button" onclick="DeleteEmperor(${id})"class="btn btn-danger deletebtn">Delete</button>
                                         <button type="button" class="btn btn-secondary close" data-bs-dismiss="modal">Cancel</button>
                                         `
     );
@@ -383,15 +384,20 @@ function DeleteEmperor(id) {
         data: "",
         dataType: "json",
         success: function (response) {
-            setTimeout(() => $("#deleteAlert").html(`
-                                                        <div class="alert alert-dismissible alert-warning">
-                                                          <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+          
+            $("#deleteAlert").html(`
+                                                        <div class="alert alert-dismissible alert-warning msg">
+                                                          <button type="button" class="btn-close " data-bs-dismiss="alert"></button>
                                                           <h4 class="alert-heading">Successfully deleted</h4>
                                                           <p class="mb-0">${response.Name}</p>
                                                         </div>
-                                                    `).fadeOut(4000),500);
+                                                    `)
+
+            setTimeout(() => ($(".msg").fadeOut(800)), 2000);
         }
     });
+
+    
 
     $("#ArmadaModal").modal("hide");
     $(`#emp${id}`).remove();
