@@ -63,7 +63,7 @@ function CreateEmperorFullTable() {
     });
 }
 
-$("#emperorTablebtn").click(CreateEmperorFullTable);
+$("#emperorTablebtn").click(CreateEmperorFullTable());
 
 //Create Emperor Section
 function ShowEmperorCreateModal() {
@@ -342,8 +342,7 @@ function ShowEmperorInfoModal(id) {
             });
 
             $("#modalBody").html(`<ul>
-                                                     <li> <p class ="text-info"> <strong>About:</strong> ${response
-                    .Description} </p> </li>
+                                                     <li> <p class ="text-info"> <strong>About:</strong> ${response.Description} </p> </li>
                                                     <ul>`);
 
             $("#modalFooter")
