@@ -36,8 +36,18 @@ namespace Armada.WebApp.Controllers.WebApi
                     MissionId = m.MissionId,
                     Type = m.Type
 
-                })
-
+                }),
+                Type = p.Type.ToString(),
+                AllTypes= new List<string> {PlanetType.ChthonianPlanet.ToString(),
+                PlanetType.CarbonPlanet.ToString(),PlanetType.CorelessPlanet.ToString(),
+                PlanetType.DesertPlanet.ToString(),PlanetType.GasDwarf.ToString(),
+                PlanetType.GasGiant.ToString(),PlanetType.HeliumPlane.ToString(),
+                PlanetType.IceGiant.ToString(),PlanetType.IcePlanet.ToString(),
+                PlanetType.IronPlanet.ToString(),PlanetType.LavaPlanet.ToString(),
+                PlanetType.OceanPlanet.ToString(),PlanetType.ProtoPlanet.ToString(), 
+                PlanetType.PuffyPlanet.ToString(),PlanetType.SilicatePlanet.ToString(),
+                PlanetType.TerrestrialPlanet.ToString()
+                }
             }); 
 
             return Ok(planets);

@@ -5,7 +5,7 @@
 function CreatePlanetTableHead() {
     $("#TabContent").html(`
                                              <h2 class="m-4 text-center">Planets</h2>
-                                            <table class="table table-hover table-bordered">
+                                            <table id="planetTable" class="table table-hover table-bordered">
                                                 <thead>
                                                     <tr>
                                                         <th>Name</th>
@@ -59,6 +59,15 @@ function CreatePlanetFullTable() {
 
 $("#planetTablebtn").click(CreatePlanetFullTable);
 
+function ShowPlanetMissions(planet) {
+    let template = "";
+    for (var mission of planet.Missions) {
+        template += `<li>
+                                        ${mission.Type}</li>`;
+    }
+
+    return template;
+}
 
 //Create Planet Section
 function ShowPlanetCreateModal() {
@@ -68,8 +77,9 @@ function ShowPlanetCreateModal() {
         $("#ArmadaModal").modal();
     });
 
-    //planet-mission template
-
+    
+    PlanetMissionsTemplate();
+    PlanetTypeTemplate();
     PlanetCreateModalBody();
 
     $("#modalFooter")
@@ -92,8 +102,9 @@ function CreatePlanet() {
         var planet = {
             "Name": $("#Name").val(),
             "StarSystem": $("#StarSystem").val(),
-            "Type": $("#Type").val(),
-            "Mission":null
+            "Type": $("#TypeSelect").val(),
+            "Mission": $("#MissionSelect").val()
+
 
         };
 
@@ -110,7 +121,7 @@ function CreatePlanet() {
                                        </div>
                                               `);
                 setTimeout(() => $("#successAlert").html('').fadeOut(4000), 4000);
-                $("#emperorTable").html(' ');
+                $("#planetTable").html(' ');
                 CreatePlanetFullTable();
             }
         });
@@ -155,23 +166,74 @@ function PlanetCreateModalBody() {
 }
 
 
+function PlanetMissionsTemplate() {
+    $.ajax({
+        type: "GET",
+        url: "/api/Mission",
+        data: "",
+        dataType: "json",
+        success: function (response) {
+
+            response.forEach(function (mission) {
+                $("#MissionSelect").append(`
+                                                  <option id="${mission.MissionId}">${mission.Type}</option>
+                                            `);
+            });
+        }
+    });
+}
+
+
+function PlanetTypeTemplate() {
+    $.ajax({
+        type: "GET",
+        url: "/api/Planet",
+        data: "",
+        dataType: "json",
+        success: function (response) {
+            //let availableType;
+            //response.forEach(function (planet) {
+            //    availableType = planet.AllTypes;
+            //});
+
+            AllTypes.forEach(function (type) {
+                $("#TypeSelect").append(`
+                                             <option>${type.toString()}</option>
+                                        `);
+            })
+        }
+    });
+
+}
+
 
 //Edit Planet Section
 
 
+function ShowPlanetEditModal(id) {
 
+    $(document).ready(function () {
+        $("#ArmadaModal").modal();
+    });
 
+    PlanetMissionsTemplate();
 
+    PlanetEditModalBody(id);
 
-function ShowPlanetMissions(planet) {
-    let template = "";
-    for (var mission of planet.Missions) {
-        template += `<li>
-                                        ${mission.Type}</li>`;
-    }
+    $("#modalFooter").html('<button type="button" class="btn btn-secondary close" data-bs-dismiss="modal">Cancel</button>');
 
-    return template;
+    $(".close").click(function () { $("#ArmadaModal").modal("hide"); });
 }
+
+function PlanetEditModalBody(id) {
+
+}
+
+
+
+
+
+
 
 //Info Planet Section
 function ShowPlanetInfoModal(id) {
