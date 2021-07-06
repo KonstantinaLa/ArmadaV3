@@ -1,6 +1,7 @@
 ﻿
 //Emperor
 
+
 //Table Creation Section
 function CreateEmperorTableHead() {
     $("#TabContent").html(`
@@ -19,7 +20,7 @@ function CreateEmperorTableHead() {
                                  <tbody id="emperorsBody">
                                   </tbody>
                                </table>
-                            <button id="create" onclick="ShowEmperorCreateModal" class="btn btn-primary m-1">Create New</button>
+                            <button onclick="ShowEmperorCreateModal()" class="btn btn-primary m-1">Create New</button>
                               `);
 }
 
@@ -66,6 +67,7 @@ function CreateEmperorFullTable() {
 $("#emperorTablebtn").click(CreateEmperorFullTable);
 
 //Create Emperor Section
+
 function ShowEmperorCreateModal() {
     $(document).ready(function () {
         $("#ArmadaModal").modal();
@@ -220,20 +222,9 @@ function ShowEmperorEditModal(id) {
 
     EmperorEditModalBody(id);
 
-    $("#modalFooter")
-        .html('<button type="button" class="btn btn-secondary close" data-bs-dismiss="modal">Cancel</button>');
+    $("#modalFooter").html('<button type="button" class="btn btn-secondary close" data-bs-dismiss="modal">Cancel</button>');
 
-    $(".close").click(function () {
-        $("#ArmadaModal").modal("hide");
-    });
-
-    $("#empEditForm").submit((e) => e.preventDefault());
-
-    EditEmperor(id);
-
-    $("#empEditForm").submit(() => $("#ArmadaModal").modal("hide"));
-
-  
+    $(".close").click(function () { $("#ArmadaModal").modal("hide"); });
 
 }
 
@@ -246,7 +237,7 @@ function EmperorEditModalBody(id) {
         success: function (response) {
             $("#modalBody").html(`
                                     <div class="col-md-8 mx-auto text-center">
-                                         <form id="empEditForm">
+                                         <form id="empEditForm" onsubmit="event.preventDefault(); EditEmperor(${response.EmperorId});">
                                            <fieldset>
                                                <legend>Edit Emperor</legend>
 
@@ -287,26 +278,29 @@ function EmperorEditModalBody(id) {
                                       </div>
                                   `);
         }
-
     });
 
 }
 
 
-function EditEmperor(id) {
-    
-    $("#empEditForm").submit((e) => {
 
-        e.preventDefault();
+
+function EditEmperor(id) {
+
+    $("#empEditForm").submit((e) => e.preventDefault());
+    
+    $("#empEditForm").submit(() => {
+
+        
         var emperor = {
             "EmperorId": $("#EmpireSelect").children(":selected").attr("id"),
             "Name": $("#Name").val(),
             "Age": $("#Age").val(),
             "Description": $("#About").val(),
+            "Species": $("#SpeciesSelect").val(),
             "Photo": null
         };
 
-        console.log(emperor);
 
         $.ajax({
             type: "PUT",
@@ -317,15 +311,18 @@ function EditEmperor(id) {
                 $("#successAlert").html(`
                                        <div class="alert alert-dismissible msg alert-success">
                                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                                           <strong>Well done!</strong> You successfully Edited  ${response.Name} !!
+                                           <strong>Well done!</strong> You successfully Edited ${response.Name}!!
                                        </div>
                                               `);
-
-                /*setTimeout(() => $("#successAlert").html('').fadeOut(4000), 4000);*/
+               
                 setTimeout(() => ($(".msg").fadeOut(800)), 2000);
+                $("#emperorTable").html(' ');
+                CreateEmperorFullTable();
             }
         });
     });
+
+    $("#empEditForm").submit(() => $("#ArmadaModal").modal("hide"));
 }
 
 
@@ -342,15 +339,12 @@ function ShowEmperorInfoModal(id) {
             });
 
             $("#modalBody").html(`<ul>
-                                                     <li> <p class ="text-info"> <strong>About:</strong> ${response.Description} </p> </li>
-                                                    <ul>`);
+                                      <li> <p class ="text-info"> <strong>About:</strong> ${response.Description} </p> </li>
+                                  <ul>`);
 
-            $("#modalFooter")
-                .html(
-                    '<button type="button" class="btn btn-secondary close" data-bs-dismiss="modal">Cancel</button>');
+            $("#modalFooter").html('<button type="button" class="btn btn-secondary close" data-bs-dismiss="modal">Cancel</button>');
 
-            $(".close").click(function () {
-                $("#ArmadaModal").modal("hide");
+            $(".close").click(function () { $("#ArmadaModal").modal("hide");
             });
         }
     });

@@ -72,7 +72,7 @@ namespace Armada.WebApp.Controllers.WebApi
                     throw;
             }
 
-            return StatusCode(HttpStatusCode.NoContent);
+            return Ok(new {Name = emperor.Name});
         }
 
         // POST: api/Emperor
