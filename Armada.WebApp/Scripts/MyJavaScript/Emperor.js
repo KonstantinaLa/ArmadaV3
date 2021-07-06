@@ -1,7 +1,4 @@
 ﻿
-//Emperor
-
-
 //Table Creation Section
 function CreateEmperorTableHead() {
     $("#TabContent").html(`
@@ -218,8 +215,8 @@ function ShowEmperorEditModal(id) {
         $("#ArmadaModal").modal();
     });
 
-    EmperorEmpiresTemplate();
-
+   
+    EmperorSpeciesTemplate();
     EmperorEditModalBody(id);
 
     $("#modalFooter").html('<button type="button" class="btn btn-secondary close" data-bs-dismiss="modal">Cancel</button>');
@@ -255,15 +252,10 @@ function EmperorEditModalBody(id) {
                                                    <label for="SpeciesSelect" class="form-label mt-4">Species</label>
                                                    <select class="form-select" id="SpeciesSelect">
                                                     <option id=${response.Species}>${response.Species}</option>
+                                                              
                                                    </select>
                                                </div>
-
-                                               <div class="form-group">
-                                                   <label for="EmpireSelect" class="form-label mt-4">Empire</label>
-                                                   <select class="form-select" id="EmpireSelect">
-                                                    <option id=${response.EmpireId}>${response.EmpireName}</option>
-                                                   </select>
-                                               </div>
+                                               
                                                <div class="form-group">
                                                    <label for="About" class="form-label mt-4">About</label>
                                                    <textarea class="form-control" id="About" rows="3"  required minlength="10">${response.Description}</textarea>
@@ -293,7 +285,7 @@ function EditEmperor(id) {
 
         
         var emperor = {
-            "EmperorId": $("#EmpireSelect").children(":selected").attr("id"),
+            "EmperorId": id,
             "Name": $("#Name").val(),
             "Age": $("#Age").val(),
             "Description": $("#About").val(),

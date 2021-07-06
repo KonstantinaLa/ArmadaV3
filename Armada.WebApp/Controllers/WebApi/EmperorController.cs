@@ -55,7 +55,7 @@ namespace Armada.WebApp.Controllers.WebApi
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
             
-            if (id != emperor.EmperorId) return BadRequest();
+             if (id != emperor.EmperorId) return BadRequest();
             
 
             unitOfWork.Emperors.Edit(emperor);
@@ -89,7 +89,7 @@ namespace Armada.WebApp.Controllers.WebApi
             }
             catch (DbUpdateException)
             {
-                if (unitOfWork.Emperors.Exists(emperor.EmperorId))
+               if (unitOfWork.Emperors.Exists(emperor.EmperorId))
                     return Conflict();
             }
 
